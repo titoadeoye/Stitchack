@@ -1,0 +1,112 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    background: #2B2B29;
+    margin-top: 5em;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 3em 0;
+}
+
+.footer a {
+    font-size: 13px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FEFEFE;
+    text-decoration: none;
+
+}
+
+.footer h3 {
+    font-size: 15px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FEFEFE;
+}
+
+.footer .socials {
+    display: flex;
+    margin: 1em 0;
+    gap: 10px
+}
+
+.socials svg {
+    font-size: 20px;
+}
+
+.footer .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.message span {
+    font-size: 20px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #B18E72;
+    font-weight: 700;
+    padding: 0 0.5em;
+}
+
+.message p {
+    font-size: 16px;
+    line-height: 22px;
+    /* or 140% */
+
+    display: flex;
+    align-items: center;
+
+    /* State/White */
+
+    color: #FEFEFE;
+}
+
+.message form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.message input {
+    opacity: 0.8;
+    border: 1px solid #B18E72;
+    border-radius: 8px 8px 0px 0px;
+    padding: 10px;
+    margin-bottom: 0.5em;
+}
+
+.message button {
+    background: linear-gradient(180deg, #CBBAAC 0%, rgba(177, 142, 114, 0.9) 17.19%, #B18E72 81.77%, #8F745E 98.96%);
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px;
+    border: none;
+}
+
+.copyrights {
+    padding: 20px 0 20px 0;
+   border-top: 1px solid #828282;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.copyrights p {
+     font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #828282;
+}

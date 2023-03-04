@@ -1,0 +1,19 @@
+#quote {
+    background: #9F9385;
+    text-align: center;
+    padding: 2em;
+}
+
+#quote p {
+    font-size: 26px;
+    line-height: 28px;
+    color: #FEFEFE;
+
+}
+
+#quote .author {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FEFEFE;
+}

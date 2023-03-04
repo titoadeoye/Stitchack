@@ -1,0 +1,43 @@
+#services {
+    text-align: center;
+    margin: 2em 0;
+    background: #B18E72;
+}
+
+#services h2 {
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 35px;
+padding: 1em 0;
+    color: #FEFEFE;
+}
+
+.services {
+    display: flex;
+    justify-content: space-around;
+    margin: 2em;
+    flex-wrap: wrap;
+}
+
+
+.service {
+    width: 200px;
+}
+
+.service svg {}
+
+.service h4 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+   color: #FFFFFF;
+   margin: 1em 0;
+
+}
+
+.service p {
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+    color: #FFFFFF;
+}

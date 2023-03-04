@@ -1,0 +1,63 @@
+#howitworks {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-inline: 2em;
+
+}
+
+#howitworks h2 {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 35px;
+    color: #252525;
+    text-align: center;
+    margin: 3em;
+}
+
+#howitworks p {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 26px;
+    text-align: center;
+    color: #252525;
+    margin: 1em 0;
+}
+
+.diagram {
+    width: 80%;
+    align-self: center;
+    margin-bottom: 5em;
+}
+
+.laptop {
+    width: 55%;
+    align-self: center;
+}
+
+#howitworks .filled {
+    background: #B18E72;
+    border-radius: 10px;
+    border: none;
+    padding: 13px 80px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+#howitworks .outlined {
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid #B18E72;
+    padding: 13px 80px;
+    color: #B18E72;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+#howitworks span {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
