@@ -1,25 +1,22 @@
 
 .nav__bar {
-  background: #2B2B29;
+  background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 80px;
   padding: 0;
 }
 
 .nav__bar button {
-  background: linear-gradient(180deg, #CBBAAC 0%, rgba(177, 142, 114, 0.9) 17.19%, #B18E72 81.77%, #8F745E 98.96%);
-border-radius: 5px;
-border: none;
-margin: 0 3em;
+  background: #fff;
+  border-radius: 5px;
+  border: none;
+  margin: 0 3em;
 }
 
-.link {
-  font-weight: 700;
-}
-
-.link, a#offcanvasNavbarDropdown-expand-md {
+.nav__bar .link, a#offcanvasNavbarDropdown-expand-md, .nav__bar .link:hover, .nav__bar .link:focus, .nav__bar .link:active {
   color: #EEEEEE;
   font-size: 0.8em;
+  font-weight: 700;
   transition: color 0.5s linear, text-decoration 0.5s linear;
 }
 
@@ -38,10 +35,10 @@ margin: 0 3em;
   padding-left: 2em;
 }
 .offcanvas-header .btn-close {
-  background-color: #FCB203;
+  background-color: #fff;
 }
 .navbar-toggler-icon {
-  background-color: #FCB203;
+  background-color: #fff;
   border-radius: 5px;
 }
 /*Styling logo*/

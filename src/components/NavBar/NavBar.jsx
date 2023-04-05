@@ -4,7 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import "./NavBar.css";
-import logo from '../../assets/logo.png';
+import { logo } from "../../assets";
+import styled from "styled-components";
 
 const NavBar = () => {
     return (
@@ -13,7 +14,7 @@ const NavBar = () => {
           {['md'].map((expand) => (
         <Navbar key={expand} bg="#000000" expand={expand} className="mb-0 nav__bar">
           <Container fluid>
-            <Navbar.Brand href="/"><img src={logo} alt="logo" className="logo" /></Navbar.Brand>
+            <Navbar.Brand href="/"><Logo src={logo} alt="logo" className="logo" /></Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -22,7 +23,7 @@ const NavBar = () => {
             >
               <Offcanvas.Header closeButton >
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                <img src={logo}  alt="logo" className="canvas_logo" />
+                <Logo src={logo}  alt="logo" className="canvas_logo" />
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -33,7 +34,7 @@ const NavBar = () => {
                   <Nav.Link className='link' href="#contact">Contact Us</Nav.Link>
                   <Nav.Link className='link' href="login">Log in</Nav.Link>
 
-                <button><Nav.Link className='link' href="register">Sign up</Nav.Link></button>
+                <button><Nav.Link style={{color: "black"}} className='link' href="register">Sign up</Nav.Link></button>
                 </Nav>
                 
               </Offcanvas.Body>
@@ -45,4 +46,9 @@ const NavBar = () => {
     )
 }
 
+const Logo = styled.img`
+  background-color: transparent;
+  width: 130px;
+  height: 65px;
+`
 export default NavBar;
