@@ -65,7 +65,7 @@ const H2 = styled.h2`
     font-weight: 700;
     font-size: 32px;
     line-height: 35px;
-    color: #000000;
+    color: rgb(168, 0, 171);
 `;
 
 const StyledAccordionItem = styled(AccordionItem)`
@@ -78,8 +78,9 @@ const StyledAccordionItem = styled(AccordionItem)`
 const StyledAccordionItemHeading = styled(AccordionItemHeading)`
     padding: 1.5em;
     width: 50em;
-    background-color: rgb(250, 250, 250);
+    background-color: #f6e5f7;
     margin: auto;
+    font-weight: 700;
 `;
 
 const StyledAccordionItemPanel = styled(AccordionItemPanel)`
