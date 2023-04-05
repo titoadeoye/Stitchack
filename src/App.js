@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 import {NavBar} from './components';
-import Landing from './pages/Landing/Landing';
-
+import Maintenance from './pages/Maintenance/Maintenance';
+import NoMatch from './pages/NoMatch/NoMatch';
+import Landing from "./pages/Landing/Landing";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
             <Routes>
 
               <Route exact path='/' element={<Landing />} />\
-              <Route path='*' element={<Landing /> }/>
+              <Route path='*' element={<NoMatch /> }/>
 
             </Routes>
           </Suspense>
