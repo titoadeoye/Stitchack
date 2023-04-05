@@ -1,33 +1,41 @@
 #about {
     display: flex;
-    padding:5em;
+    padding: 5em;
     gap: 40px;
 }
 
 #about img {
     height: 400px;
 }
+
 #about div {
     margin: auto;
 }
+
 #about h2 {
     font-weight: 700;
-    font-size: 26px;
+    font-size: 30px;
     line-height: 35px;
-    color: #2B2B29;
+    color: #A800AB;
 }
 
 #about p {
     font-size: 14px;
     line-height: 28px;
-   color: #4F4F4F;
-   width: 80%;
+    color: #4F4F4F;
+    width: 80%;
 }
 
 #about a {
     font-size: 14px;
     line-height: 20px;
-   text-decoration-line: underline;
-color: #B18E72;
+    text-decoration-line: underline;
+    color: #A800AB;
+    font-weight: 600;
+}
+
+#about a:hover {
+
+    text-decoration-line: none;
 
 }
