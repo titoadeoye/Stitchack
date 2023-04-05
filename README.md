@@ -7,4 +7,5 @@ their work and store details of fabric type. It also serves as a productivity an
 management tool for tailors to organize their projects based on their status, using color 
 codes, and also have access to the total revenue generated over a period of time.
 
-### [Netlify](https://stitchack.netlify.app)
+# Hosted on
+- [Netlify](https://stitchack.netlify.app)
