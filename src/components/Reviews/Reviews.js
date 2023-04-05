@@ -28,9 +28,9 @@ export default function Reviews() {
                     <p>"I love this site and would totally recommend"</p>
                 </div>
             </div>
-            <div className="scroll">
+            {/* <div className="scroll">
                 <a href="#home">Scroll to top</a>
-            </div>
+            </div> */}
         </div>
     )
 }
