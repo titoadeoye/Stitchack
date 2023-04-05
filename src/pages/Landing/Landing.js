@@ -6,11 +6,15 @@ export default function Landing() {
             <Home />
             <Services />
             <About />
-             <Quote />
-            <HowItWorks />
-            {/* <FAQs /> */}
-            <Reviews />
-            <Footer />
+            <FAQs />
+            <Reviews /> 
+            <Footer /> 
+             {/* <Quote /> */}
+            {/* <HowItWorks />
+            
+            
+           
+            */}
         </>
     )
 }
