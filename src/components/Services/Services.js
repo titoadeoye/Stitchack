@@ -8,7 +8,7 @@ export default function Services () {
             <div className="services">
                 <div className="service">
                     <MeasurementIcon />
-                    <h4>Measurement</h4>
+                    <h4>Measurement</h4> 
                     <p>Store your customers measurements and style</p>
                 </div>
 
@@ -31,5 +31,6 @@ export default function Services () {
                 </div>
             </div>
         </div>
+       
     )
 }
