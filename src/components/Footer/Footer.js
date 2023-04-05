@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { logo } from "../../assets";
+import styled from "styled-components";
 import { TwitterIcon, FacebookIcon, InstagramIcon, LinkedinIcon, EmailIcon } from "../../assets/svg";
-import "./Footer.css";
 
 export default function Footer() {
     const [email, setEmail] = useState("")
     return (
-        <footer>
-            <div className="footer">
-                <div className="logo-wrap"> 
+        <Wrapper>
+            <div>
+                <LogoWrap>
                     <img src={logo} alt="logo" />
                     <div className="socials">
                         <TwitterIcon />
@@ -17,9 +17,9 @@ export default function Footer() {
                         <LinkedinIcon />
                         <EmailIcon />
                     </div>
-                </div>
+                </LogoWrap>
 
-                <div className="links">
+                {/* <div className="links">
                     <div>
                         <h3>Who We Are</h3>
                         <a href="#about">About us</a>
@@ -37,24 +37,61 @@ export default function Footer() {
                         <a href="#faq">FAQ</a>
 
                     </div>
-                </div>
+                </div> */}
 
-                <div className="message">
-                    <h3>Stay in the  <span> LOOP</span></h3>
-                    <p>Join our mailing list to stay in the loop with our newest<br />
-                        features, releases, tips and tricks
-                    </p>
-                    <form onSubmit={() => console.log(email)}>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email address" required />
-                        <button type="submit">I'm in</button>
-                    </form>
-                </div>
+                <Copyrights>
+                    <p>@{new Date().getFullYear()} Stitchack | All rights reserved</p>
+                </Copyrights>
             </div>
 
-            <div className="copyrights">
-                <p>@{new Date().getFullYear()} Stitchack | All rights reserved</p>
-            </div>
 
-        </footer>
+        </Wrapper>
     )
 }
+
+const Wrapper = styled.footer`
+    height: 50px;
+    background-color: black;
+    width: 100vw;
+
+    & > div {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        padding: 0 10px;
+    }
+`;
+
+const Copyrights = styled.div`
+    
+    display: flex;
+    align-items: end;
+     & p {
+        font-size: 10px;
+        color: #ddd;
+        font-weight: lighter;
+     }
+`;
+
+const LogoWrap = styled.div`
+
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    img {
+        height: 40px;
+    }
+    .socials {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        gap: 10px;
+        padding-top: 0.8em;
+
+        svg {
+            width: 10px;
+            height: 10px;
+        }
+    }
+`;
