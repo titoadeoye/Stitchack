@@ -3,9 +3,10 @@
     /* gap: 20px; */
     height: calc(100vh - 80px);
 }
+
 #home .text {
     margin: 0 2em;
-    width: calc(100% - 700px);
+    width: 50%;
     align-self: baseline;
     padding-bottom: 2em;
 }
@@ -18,8 +19,9 @@
 }
 
 #home .landing {
-    height: 600px;
-    width: 800px;
+    /* margin-right: 2em; */
+    width: 280px;
+    height: 100%;
 }
 
 #home p {
@@ -49,7 +51,7 @@
 }
 
 /* wavy background */
-section {
+#home section {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -57,10 +59,10 @@ section {
     min-height: 400px;
     padding-top: 100px;
     /* background: #3c31dd; */
-    background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
+    background: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
 }
- 
-.curve {
+
+#home .curve {
     position: absolute;
     height: 250px;
     width: 100%;
@@ -68,7 +70,7 @@ section {
     text-align: center;
 }
 
-.curve::before {
+#home .curve::before {
     content: '';
     display: block;
     position: absolute;
@@ -79,14 +81,64 @@ section {
     background-color: white;
 }
 
-.curve::after {
+#home .curve::after {
     content: '';
     display: block;
     position: absolute;
     border-radius: 100% 50%;
     width: 55%;
     height: 100%;
-    background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
+    background: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
     transform: translate(-4%, 40%);
     z-index: -1;
+}
+
+#home .home-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 700px) {
+
+    /* #home {
+        margin-bottom: 15em;
+    } */
+    #home .landing {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    #home h1 {
+        font-size: 29px;
+        line-height: 32px;
+    }
+
+    #home p {
+        font-size: 12px;
+        line-height: 21px;
+    }
+
+    /* #home {
+        overflow-x: hidden;
+    } */
+    /* .curve::after,.curve::before {
+        display: none;
+    } */
+}
+
+@media (max-width: 450px) {
+    #home section {
+        padding-top: 40px;
+    }
+
+    #home button {
+        font-size: 0.9em;
+        width: 74%;
+        padding: 9px;
+    }
+
+    #home .curve {
+        height: 200px;
+    }
 }
