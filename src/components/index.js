@@ -7,6 +7,7 @@ import HowItWorks from "./HowItWorks/HowItWorks";
 import Quote from "./Quote/Quote";
 import Reviews from "./Reviews/Reviews";
 import Services from "./Services/Services";
+import CustomInput from "./CustomInput";
 
 
 export {
@@ -18,5 +19,6 @@ export {
     HowItWorks,
     Quote,
     Reviews,
-    Services
+    Services,
+    CustomInput
 }
