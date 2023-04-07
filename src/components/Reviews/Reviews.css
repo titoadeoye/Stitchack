@@ -23,8 +23,10 @@
 }
 
 .review {
-    background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);;
+    background: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
+    ;
     border-radius: 10px;
+    margin-left: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,4 +76,19 @@
 .scroll a {
     text-decoration: none;
     color: #fff;
+}
+
+
+@media (max-width: 650px) {
+    .reviews {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        justify-content: flex-start;
+    }
+
+    .review {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+    }
 }
