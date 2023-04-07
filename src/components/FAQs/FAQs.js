@@ -69,15 +69,12 @@ const H2 = styled.h2`
 `;
 
 const StyledAccordionItem = styled(AccordionItem)`
-    // padding: 1.5em;
-    // width: 50em;
-    // background-color: rgb(250, 250, 250);
     margin: 0.8em;
 `
 
 const StyledAccordionItemHeading = styled(AccordionItemHeading)`
     padding: 1.5em;
-    width: 50em;
+    width: 80%;
     background-color: #f6e5f7;
     margin: auto;
     font-weight: 700;
@@ -85,6 +82,6 @@ const StyledAccordionItemHeading = styled(AccordionItemHeading)`
 
 const StyledAccordionItemPanel = styled(AccordionItemPanel)`
     padding: 1.5em;
-    width: 50em;
+    width: 80%;
     margin: auto;
 `
