@@ -17,7 +17,7 @@ function App() {
             <Routes>
 
               <Route exact path='/' element={<Landing />} />\
-              <Route exact path='register' element={<Register />} />\             
+              <Route exact path='register' element={<NoMatch />} />\             
               {/* <Route exact path='signin' element={<Login />} />\ */}
               <Route path='*' element={<NoMatch /> }/>
 
