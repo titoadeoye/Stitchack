@@ -3,20 +3,18 @@ import {CustomInput} from "../components";
 import { Link } from "react-router-dom";
 
 
-export default function Register() {
+export default function Login() {
     return (
         <Wrapper>
             <section>
 
                 <Form>
-                    <h2>Sign Up</h2>
-                    <CustomInput type="text" placeholder="First name" required />
-                    <CustomInput type="text" placeholder="Last name" required/>
+                    <h2>Sign In</h2>
                     <CustomInput type="email" placeholder="Email" required />
                     <CustomInput type="password" placeholder="Password" required />
                     <Button type="submit">Submit</Button>
-                    <Text>Already have an account?
-                        <Link to="/signin">  Sign in</Link>
+                    <Text>Don't have an account?  
+                        <Link to="/register">  Sign up</Link>
                     </Text>
                 </Form>
 
