@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import NoMatch from './pages/NoMatch/NoMatch';
 import Landing from "./pages/Landing/Landing";
-// import Login from "./pages/Login/Login";
+import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 
@@ -17,8 +17,8 @@ function App() {
             <Routes>
 
               <Route exact path='/' element={<Landing />} />\
-              <Route exact path='register' element={<NoMatch />} />\             
-              {/* <Route exact path='signin' element={<Login />} />\ */}
+              <Route exact path='register' element={<Register />} />\             
+              <Route exact path='signin' element={<Login />} />\
               <Route path='*' element={<NoMatch /> }/>
 
             </Routes>
