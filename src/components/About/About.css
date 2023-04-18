@@ -50,8 +50,13 @@
 
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     #about {
         flex-direction: column;
+        padding: 5em 2em;
     }
+    #about div, #about img, #about p {
+        width: 100%;
+    }
+
 }

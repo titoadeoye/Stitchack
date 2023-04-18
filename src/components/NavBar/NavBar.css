@@ -1,16 +1,26 @@
 
 .nav__bar {
-  background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%); */
+  background-color: transparent;
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   height: 80px;
   padding: 0;
 }
 
-.nav__bar button {
-  background: #fff;
+/* .nav__bar button {
+  background: #fff !important;
   border-radius: 5px;
   border: none;
-  margin: 0 3em;
+  margin: 0 3em !important;
+} */
+
+.offcanvas-body button {
+  background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
+  border-radius: 5px;
+  color: white !important;
+  border: none;
+  margin: 1.5em 2em;
+
 }
 
 .nav__bar .link, a#offcanvasNavbarDropdown-expand-md, .nav__bar .link:hover, .nav__bar .link:focus, .nav__bar .link:active {
@@ -25,7 +35,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 /* offcanvas styles */
 .offcanvas {
-  background-color: #111111;
+  background-color: #fafafa;
 
 }
 .offcanvas-header {
@@ -59,7 +69,21 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 button.navbar-toggler.collapsed {
   padding: 0;
-  width: 3em
+  width: 2.5em;
+  margin: 0em !important;
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  background-color: #fff;
+}
+
+.offcanvas-body button {
+  background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
+  border-radius: 5px;
+  color: red;
+  border: none;
+  margin: 1.5em 2em;
+
 }
 
 @media (max-width: 760px) {

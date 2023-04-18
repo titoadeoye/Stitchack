@@ -90,5 +90,12 @@
     .review {
         flex-shrink: 0;
         scroll-snap-align: start;
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    #reviews {
+        padding-inline: 40px;
     }
 }
