@@ -50,10 +50,41 @@ body {
     background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
 }
 
-.container-fluid {
+/* .container-fluid {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto
-}
+} */
 
+.offcanvas {
+    background-color: #fafafa;
+  
+  }
+  .offcanvas-header {
+    padding-left: 0;
+  }
+  .offcanvas-body {
+    padding-left: 2em;
+  }
+  .offcanvas-header .btn-close {
+    background-color: #fff;
+  }
+  .navbar-toggler-icon {
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  .logo{
+    text-align: center;
+    display: inline-flex;
+    margin-left: 0;
+  }
+  
+  .canvas_logo{
+    text-align: center;
+    display: inline-flex;
+    /* height: 8rem;
+    width: 8rem; */
+    margin: 0;
+  }
