@@ -2,17 +2,34 @@ import styled from "styled-components";
 import { useState } from "react";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 
-const CustomInput = (props) => {
+const CustomInput = ({
+	type,
+	className,
+	leftIcon,
+	data,
+	span,
+	error,
+	touched,
+	determiner,
+	...others
+}) => {
 	const [see, setSee] = useState(false);
-	const { type, ...others } = props;
-	if (type === "email") {
+	if (type === "email")
 		return (
-			<Wrapper>
-				{others?.lefticon}
-				<input type={type} {...others} />
+			<Wrapper error={error} touched={touched} className={className}>
+				{leftIcon}
+				<input type="email" {...others} />
 			</Wrapper>
-		)
-	}
+		);
+
+	if (type === "checkbox")
+		return (
+			<Label error={error} touched={touched} className={className}>
+				<input type="checkbox" {...others} />
+				<span style={{ marginLeft: 5 }}>{span}</span>
+			</Label>
+		);
+
 	if (type === "tel") {
 		return (
 			<Wrapper style={{ justifyContent: "space-around" }}>
@@ -23,10 +40,10 @@ const CustomInput = (props) => {
 	}
 
 
-	if (type === "password") {
+	if (type === "password")
 		return (
-			<Wrapper className={others?.className}>
-				{others?.lefticon}
+			<Wrapper error={error} touched={touched} className={className}>
+				{leftIcon}
 				<input type={see ? "text" : "password"} {...others} />
 				{see ? (
 					<EyeOutlined
@@ -43,16 +60,6 @@ const CustomInput = (props) => {
 				)}
 			</Wrapper>
 		);
-	}
-
-	if (type === "checkbox") {
-		return (
-			<Label>
-				<input type="checkbox" {...others} />
-				<span style={{ marginLeft: 5 }}>{others?.span && others?.span}</span>
-			</Label>
-		);
-	}
 
 
 	if (type === "select") {
@@ -78,6 +85,7 @@ const CustomInput = (props) => {
 			</Wrapper>
 		)
 	}
+	
 
 	if (type === "textarea") {
 		return (
@@ -88,10 +96,9 @@ const CustomInput = (props) => {
 	}
 
 	return (
-		<Wrapper >
-			{others?.lefticon}
+		<Wrapper error={error} touched={touched} className={className}>
+			{leftIcon}
 			<input type="text" {...others} />
-			{others?.rightText}
 		</Wrapper>
 	);
 
@@ -101,8 +108,8 @@ const CustomInput = (props) => {
 const Wrapper = styled.div`
 	// --horizontal-padding: 20px;
 	// --verical-padding: 9px;
-	// --error-font-size: 1rem;
-	// --border-width: 2px;
+	--error-font-size: 1rem;
+	--border-width: 2px;
 
 	display: flex;
 	align-items: center;
@@ -112,10 +119,10 @@ const Wrapper = styled.div`
     justify-content: center;
 	background: white;
     margin: auto;
-	margin-bottom: ${(props: any) => (props.error && props.touched ? 25 : 20)}px;
+	margin-bottom: ${(props) => (props.error && props.touched ? 25 : 20)}px;
     // width: 20em;
 	max-width: 20em;
-    border: 1px solid #C5D8FF;
+    border: 1px solid #ccc;
 
 	.tel {
 		margin-left: 1em;
@@ -124,7 +131,10 @@ const Wrapper = styled.div`
 
 
     svg {
-            margin: 0 10px;
+            // margin: 0 10px;
+			position: absolute;
+			right: 6px;
+			top: 37%;
         }
 
 	input[type="text"],
@@ -140,10 +150,14 @@ const Wrapper = styled.div`
 		flex: 1;
         margin: 0;
 		letter-spacing: 1px;
-		color: grey;
+		color: #2b0548;
         height: 51px;
-		padding: 0 1em;
-		background-color: rgba(0, 87, 255, 0.02);
+		// padding: 0 1em;
+		background-color: rgba(246, 229, 247, 0.03);
+	
+		@media (max-width: 345px) {
+			padding: 0;
+		}
 	}
 
 	input[type="textarea"] {
@@ -168,7 +182,7 @@ const Wrapper = styled.div`
 		font-style: normal;
 		font-weight: 700;
 		font-size: 0.8rem;
-		color: #aaa;
+		color: #2b0548;
 	}
 	
 	.right-text {
@@ -194,9 +208,9 @@ const Wrapper = styled.div`
 
 	&.border-yellow {
 		border: var(--border-width) solid
-			${(props: any) =>
+			${(props) =>
 		props.error && props.touched
-			? props.theme.red
+			? "red"
 			: props.theme.primaryColor};
 	}
 
@@ -245,12 +259,14 @@ const Wrapper = styled.div`
 	}
 
 	&:after {
-		content: "${(props: any) => props.touched && props.error}";
-		color: ${(props) => props.theme.white};
+		content: "${(props) => props.touched && props.error}";
+		color: #2b0548;
+		font-weight: 600;
 		position: absolute;
 		left: var(--horizontal-padding);
 		bottom: calc((var(--error-font-size) + (var(--border-width) * 4)) * -1);
-		font-size: 1rem;
+		font-size: 0.8rem;
+		margin-bottom: 0.5em;
 	}
 `;
 
@@ -259,18 +275,28 @@ const Label = styled.label`
 	align-items: center;
 	font-style: normal;
 	font-weight: 500;
-	font-size: 1.4rem;
-	line-height: 1.6rem;
+	font-size: 1rem;
+	line-height: 1rem;
 	cursor: pointer;
 	position: relative;
 	text-align: center;
+	margin-bottom: 1em;
+	justify-content: center;
+}
+
+	a {
+		text-decoration: none;
+		color: #2b0548;
+		font-weight: 600;
+	}
 
 	&:after {
+		content: "${(props) => props.touched && props.error}";
 		color: red;
 		position: absolute;
 		left: 50%;
 		bottom: -18px;
-		font-size: 1rem;
+		font-size: 0.8rem;
 		transform: translateX(-50%);
 		width: 100%;
 	}

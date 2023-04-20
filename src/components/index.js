@@ -8,7 +8,7 @@ import Quote from "./Quote/Quote";
 import Reviews from "./Reviews/Reviews";
 import Services from "./Services/Services";
 import CustomInput from "./CustomInput";
-
+import Loader from "./Loader";
 
 export {
     NavBar,
@@ -20,5 +20,6 @@ export {
     Quote,
     Reviews,
     Services,
-    CustomInput
+    CustomInput,
+    Loader
 }
