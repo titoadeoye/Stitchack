@@ -4,6 +4,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.nomatch-wrap .wrap {
+    height: 100vh;
+}
+
 .d-flex {
     display:flex;
 }
