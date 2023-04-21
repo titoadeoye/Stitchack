@@ -152,12 +152,10 @@ const Wrapper = styled.div`
 		letter-spacing: 1px;
 		color: #2b0548;
         height: 51px;
-		// padding: 0 1em;
+		padding-left: 1em;
 		background-color: rgba(246, 229, 247, 0.03);
 	
-		@media (max-width: 345px) {
-			padding: 0;
-		}
+		
 	}
 
 	input[type="textarea"] {
