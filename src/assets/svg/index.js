@@ -8,6 +8,7 @@ import { ReactComponent as LinkedinIcon } from "./linkedin.svg";
 import { ReactComponent as MeasurementIcon } from "./measurement.svg";
 import { ReactComponent as TwitterIcon } from "./twitter.svg";
 import { ReactComponent as UploadIcon } from "./upload.svg";
+import { ReactComponent as BurgerIcon } from "./burger.svg";
 
 export {
     CatalogueIcon,
@@ -19,5 +20,6 @@ export {
     LinkedinIcon,
     MeasurementIcon,
     TwitterIcon,
-    UploadIcon
+    UploadIcon,
+    BurgerIcon
 }
