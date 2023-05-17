@@ -73,6 +73,7 @@ const Text = styled.div`
     height: 60px;
     width: 100%;
     align-self: end;
+    gap: 30px;
 `
 
 const Copyrights = styled.div`
@@ -91,6 +92,11 @@ const LogoWrap = styled.div`
     display: flex;
     gap: 30px;
     align-items: center;
+    
+    @media (max-width: 520px) {
+        flex-direction: column-reverse;
+        gap: 0;
+    }
 
     img {
         height: 40px;
