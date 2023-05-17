@@ -1,4 +1,4 @@
-import { howItWorks, laptop } from "../../assets";
+import { howItWorks } from "../../assets";
 import "./HowItWorks.css";
 
 export default function HowItWorks() {

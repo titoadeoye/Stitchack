@@ -8,8 +8,8 @@ export default function Home() {
     const navigate = useNavigate();
     return (
         <div id="home">
-            
-            <div style={{background: 'linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)'}}>
+            {/* background: 'linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)'} */}
+            <div style={{background: "#141414"}}>
                 <NavBar />
                 <section>
                     <div  className="home-content">
@@ -33,12 +33,13 @@ export default function Home() {
 }
 
 const Button = styled.button`
-    background: #fff;
+    background: var(--white);
     border-radius: 10px;
     border: none;
     color: #A800AB;
     font-weight: 700;
-    padding: 11px 70px;
+    font-size: 1.3em;
+    padding: 12px 70px;
 
     @media (max-width: 460px) {
             font-size: 0.9em;

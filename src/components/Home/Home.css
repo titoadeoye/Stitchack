@@ -87,7 +87,8 @@
     border-radius: 100% 50%;
     width: 55%;
     height: 100%;
-    background: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
+    /* background: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%); */
+    background: var(--background);
     transform: translate(-4%, 40%);
     z-index: -1;
 }

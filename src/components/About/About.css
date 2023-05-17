@@ -16,13 +16,14 @@
     font-weight: 700;
     font-size: 30px;
     line-height: 35px;
-    color: #A800AB;
+    color: var(--primaryColor);
 }
 
 #about p {
     font-size: 14px;
     line-height: 28px;
-    color: #4F4F4F;
+    /* color: #4F4F4F; */
+    color: var(--background);
     width: 80%;
 }
 

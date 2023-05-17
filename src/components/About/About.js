@@ -1,4 +1,3 @@
-import { aboutUs } from "../../assets";
 import hero from "../../assets/man.jpg";
 import "./About.css";
 

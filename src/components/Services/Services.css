@@ -3,7 +3,8 @@
     margin: 2em 0;
     /* background: #6251C3; */
 
-    background: linear-gradient(90.32deg, #8F00FF 0.28%, rgba(143, 0, 255, 0) 99.72%), #764ABC;
+    /* background: linear-gradient(90.32deg, #8F00FF 0.28%, rgba(143, 0, 255, 0) 99.72%), #764ABC; */
+    background: var(--services);
     padding: 2em 0;
     width: 80%;
     margin: auto;
@@ -16,7 +17,8 @@
     font-size: 30px;
     line-height: 35px;
     padding: 1em 0;
-    color: #FEFEFE;
+    /* color: #FEFEFE; */
+    color: var(--white);
 }
 
 .services {
@@ -31,13 +33,15 @@
     width: 200px;
 }
 
-.service svg {}
+.service svg path{
+  fill: var(--white);
+}
 
 .service h4 {
     font-weight: 600;
     font-size: 16px;
     line-height: 28px;
-    color: #FFFFFF;
+    color: var(--white);
     margin: 1em 0;
 
 }
@@ -46,27 +50,6 @@
     font-size: 14px;
     line-height: 25px;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--white);
 }
 
-/* wavy background */
-/* .box {
-    --size: 50px;
-    height: 200px;
-    margin: 5px;
-    border: 1px solid;
-    
-    background:
-      radial-gradient(var(--size) at 50% var(--size),blue 99%,#0000 101%) calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100% no-repeat,
-      radial-gradient(var(--size) at 50% 0px,#0000 99%,red 101%) 50% var(--size)/calc(4*var(--size)) 100% no-repeat;
-  }
-  .box + .box {
-    background-repeat: repeat-x;
-  }
-  .box.mask {
-    -webkit-mask:
-      radial-gradient(var(--size) at 50% var(--size),blue 99%,#0000 101%) calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100%,
-      radial-gradient(var(--size) at 50% 0px,#0000 99%,red 101%) 50% var(--size)/calc(4*var(--size)) 100% repeat-x;
-    background:linear-gradient(90deg,red,blue);  
-    border: none;
-  } */

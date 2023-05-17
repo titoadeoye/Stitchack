@@ -53,8 +53,8 @@ const Logo = styled.img`
 `
 
 const Button = styled.button`
-  background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
-
+  // background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
+  background: red;
   border-radius: 5px;
   border: none;
   margin: 2em 3em;
@@ -65,19 +65,22 @@ const Button = styled.button`
 const Wrapper = styled(Navbar)`
 /* background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%); */
   background-color: transparent;
-  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   height: 80px;
   padding: 0;
 
+  .link {
+    margin: 0 0.5em;
+  }
+
   .link, a#offcanvasNavbarDropdown-expand-md, .link:hover, .link:focus, .link:active {
     color: #EEEEEE;
-    font-size: 0.8em;
+    font-size: 1.3em;
     font-weight: 700;
     transition: color 0.5s linear, text-decoration 0.5s linear;
   }
 
   .offcanvas-body button {
-    background: #fff;
+    background: var(--white);
     border-radius: 5px;
     color: white !important;
     border: none;
@@ -127,7 +130,7 @@ const Wrapper = styled(Navbar)`
   
   
   button.navbar-toggler.collapsed {
-    padding: 0;
+    padding: 3px 0;
     width: 2.5em;
     margin: 0em !important;
     position: absolute;

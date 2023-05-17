@@ -4,7 +4,7 @@
     align-items: center;
     padding-inline: 80px;
     margin: 3em 0;
-    margin-bottom: 10em;
+    margin-bottom: 17em;
 }
 
 #reviews h2 {
@@ -12,8 +12,7 @@
     font-weight: 700;
     font-size: 32px;
     line-height: 35px;
-    color: rgb(168, 0, 171);
-
+    color: var(--primaryColor);
 }
 
 .reviews {
@@ -23,8 +22,7 @@
 }
 
 .review {
-    background: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
-    ;
+    background: var(--reviews);
     border-radius: 10px;
     margin-left: 10px;
     display: flex;
@@ -48,8 +46,7 @@
     font-size: 15px;
     line-height: 24px;
     padding-top: 0.5em;
-    color: #f6e5f7;
-
+    color: var(--white);
 }
 
 .review p {
@@ -57,7 +54,7 @@
     font-size: 12px;
     line-height: 28px;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--white);
     text-align: center;
 }
 
