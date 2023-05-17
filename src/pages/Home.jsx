@@ -1,15 +1,10 @@
-import styled from "styled-components"
+import {PageWrapper} from "../components";
 
 export default function Home () {
     return (
-        <Fullpage>
-            <h2>Welcome</h2>
-        </Fullpage>
+        <PageWrapper>
+            <h1>Welcome</h1>
+        </PageWrapper>
     )
 };
 
-const Fullpage = styled.div`
-    height: 100vh;
-    width: 100vw;
-    background-color: #fafafa;
-`

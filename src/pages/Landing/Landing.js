@@ -1,4 +1,4 @@
-import { About, FAQs, Footer, Home, HowItWorks, Quote, Reviews, Services } from "../../components";
+import { About, FAQs, Footer, Home, Reviews, Services } from "../../components";
 
 export default function Landing() {
     return (
@@ -9,12 +9,6 @@ export default function Landing() {
             <FAQs />
             <Reviews /> 
             <Footer /> 
-             {/* <Quote /> */}
-            {/* <HowItWorks />
-            
-            
-           
-            */}
         </>
     )
 }

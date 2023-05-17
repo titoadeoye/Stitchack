@@ -221,7 +221,7 @@ const Error = styled.span`
     font-weight: 900;
     font-size: 0.7em;
     text-align: center;
-        display: flex;
+    display: flex;
     justify-content: center;
 `
 
