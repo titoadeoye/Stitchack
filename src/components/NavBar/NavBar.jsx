@@ -97,8 +97,8 @@ const Wrapper = styled(Navbar)`
 
   .offcanvas {
     background-color: var(--background);
-  
   }
+
   .offcanvas-header {
     padding-left: 0;
   }
