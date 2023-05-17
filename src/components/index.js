@@ -1,14 +1,19 @@
 import NavBar from "./NavBar/NavBar";
 import Home from "./Home/Home";
 import About from "./About/About";
-import FAQs from "./FAQs/FAQs";
-import Footer from "./Footer/Footer";
+import Footer from "./Footer";
 import HowItWorks from "./HowItWorks/HowItWorks";
 import Quote from "./Quote/Quote";
 import Reviews from "./Reviews/Reviews";
 import Services from "./Services/Services";
+import FAQs from "./FAQs";
 import CustomInput from "./CustomInput";
 import Loader from "./Loader";
+import PageWrapper from "./PageWrapper";
+import SideNav from "./SideNav";
+import TopNav from "./TopNav";
+import SearchInput from "./SearchInput";
+
 
 export {
     NavBar,
@@ -21,5 +26,9 @@ export {
     Reviews,
     Services,
     CustomInput,
-    Loader
+    Loader,
+    PageWrapper,
+    SideNav,
+    TopNav,
+    SearchInput
 }
