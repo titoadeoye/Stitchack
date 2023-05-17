@@ -36,10 +36,10 @@ const Button = styled.button`
     background: var(--white);
     border-radius: 10px;
     border: none;
-    color: #A800AB;
+    color: var(--background);
     font-weight: 700;
     font-size: 1.3em;
-    padding: 12px 70px;
+    padding: 14px 70px;
 
     @media (max-width: 460px) {
             font-size: 0.9em;
