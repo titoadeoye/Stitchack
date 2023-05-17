@@ -173,3 +173,9 @@
         height: 150px;
     }
 }
+
+@media (max-height: 800px) {
+    #home {
+        margin-bottom: 32em;
+    }
+}
