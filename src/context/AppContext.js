@@ -1,13 +1,8 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { getFromStorage, setToStorage } from "../constants";
+import { createContext, useContext, useState } from "react";
 
 export const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-	// const [user, setUser] = useState(getFromStorage("user"));
-	// const [isLoggedIn, setIsLoggedIn] = useState(getFromStorage("token"));
-	// const [isPlayListModalOpen, setIsPlayListModalOpen] = useState(false);
-	// const [songToAddToPlayList, setSongToAddToPlayList] = useState();
 	const [modalType, setModalType] = useState();
 	const [isOpenModal, setIsOpenModal] = useState(false);
 
