@@ -5,16 +5,19 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import './App.css';
 import { useMediaQuery } from "react-responsive";
 import { Outlet } from 'react-router-dom';
-import { SideNav, TopNav } from './components';
+import { Loader, SideNav, TopNav } from './components';
 import { device } from './constants';
 
-
-import NoMatch from './pages/NoMatch/NoMatch';
-import Landing from "./pages/Landing/Landing";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
 // import Maintenance from "./pages/Maintenance/Maintenance";
-import Home from "./pages/Home";
+
+const NoMatch = React.lazy(() => import('./pages/NoMatch/NoMatch'));
+const Landing = React.lazy(() => import('./pages/Landing/Landing'));
+const Login = React.lazy(() => import('./pages/Login'));
+const Register = React.lazy(() => import('./pages/Register'));
+const Home = React.lazy(() => import('./pages/Home'));
+const Customers = React.lazy(() => import('./pages/Customers'));
+
+
 
 const GlobalStyle = createGlobalStyle`
     :root {
@@ -98,6 +101,10 @@ const GlobalStyle = createGlobalStyle`
         
     }
 
+    h3 {
+        font-weight: 700;
+    }
+
     /* A elements that don't have a class get default styles */
     a:not([class]) {
         text-decoration-skip-ink: auto;
@@ -135,7 +142,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
 
-    /*  */
     /*  */
     /*  */
     /* UTILITIES */
@@ -238,7 +244,7 @@ function App() {
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
                 <Router>
-                    <Suspense fallback={<div>Loading....</div>}>
+                    <Suspense fallback={<Loader />}>
 
                         <Routes>
 
@@ -247,6 +253,7 @@ function App() {
                             <Route path='signin' element={<Login />} />\
                             <Route path='app' element={<PagesWrapper />}>
                                 <Route index element={<Home />} />
+                                <Route path="customers" element={<Customers />} />
                             </Route>
                             <Route path='*' element={<NoMatch />} />
 

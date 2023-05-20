@@ -2,13 +2,14 @@
     font-family: montserrat;
     src: url(./fonts/Montserrat-Regular.woff);
 }
+
 body {
     font-family: 'montserrat', Arial, Helvetica, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background-color: #fff;
     overflow-x: hidden;
-    
+
 }
 
 .container {
@@ -47,44 +48,57 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
+    background: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
 }
 
-/* .container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto
-} */
-
-.offcanvas {
-    background-color: #fafafa;
-  
-  }
-  .offcanvas-header {
+.offcanvas-header {
     padding-left: 0;
-  }
-  .offcanvas-body {
+}
+
+.offcanvas-body {
     padding-left: 2em;
-  }
-  .offcanvas-header .btn-close {
+}
+
+.offcanvas-header .btn-close {
     background-color: #fff;
-  }
-  .navbar-toggler-icon {
+}
+
+.navbar-toggler-icon {
     background-color: #fff;
     border-radius: 5px;
-  }
+}
 
-  .logo{
+.logo {
     text-align: center;
     display: inline-flex;
     margin-left: 0;
-  }
-  
-  .canvas_logo{
+}
+
+.canvas_logo {
     text-align: center;
     display: inline-flex;
     /* height: 8rem;
     width: 8rem; */
     margin: 0;
-  }
+}
+
+@media (max-width: 768px) {
+    .offcanvas {
+        background: var(--background);
+    }
+
+    .offcanvas-body a, .offcanvas-body a:focus,
+    .offcanvas-body a:active, .offcanvas-body a:hover {
+        color: var(--white);
+        padding-bottom: 2em;
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+
+@media (max-width: 500px) {
+   h2 {
+    font-size: 27px !important;
+    line-height: 25px !important;
+   }
+}
