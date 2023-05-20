@@ -9,7 +9,8 @@ import signup from './signup.png';
 import logo from './logo.png';
 import bg1 from './bg1.png';
 import bg from './bg.png';
-
+import female from "./female.jpeg";
+import male from "./male.jpeg";
 
 export {
     howItWorks,
@@ -22,5 +23,7 @@ export {
     signup,
     logo,
     bg,
-    bg1
+    bg1,
+    female,
+    male
 }
