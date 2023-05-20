@@ -46,10 +46,10 @@ const SideNav = ({ isSideNavOpen, setIsSideNavOpen }) => {
 							Dashboard
 						</NavItem>
 					</NavLink>
-					<NavLink to="/app">
+					<NavLink to="/app/customers">
 						<NavItem>
 							<FolderOutlined />
-							Customer Folder
+							Customers
 						</NavItem>
 					</NavLink>
 					<NavLink to="/app">

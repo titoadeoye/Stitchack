@@ -6,6 +6,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 // import "./NavBar.css";
 import { logo } from "../../assets";
 import styled from "styled-components";
+import { device } from "../../constants";
 
 const NavBar = () => {
     return (
@@ -59,6 +60,11 @@ const Button = styled.button`
   margin: 2em 3em;
   padding: 0 2em;
   font-weight: 700;
+
+  @media ${device.isSmallDevice} {
+    height: 40px;
+    padding: 0;
+  }
 `;
 
 const Wrapper = styled(Navbar)`
@@ -71,11 +77,12 @@ const Wrapper = styled(Navbar)`
     margin: 0 0.5em;
   }
 
-  .link, a#offcanvasNavbarDropdown-expand-md, .link:hover, .link:focus, .link:active {
-    color: red;
+  .link, .link:hover, .link:focus, .link:active {
+    color: #EEEEEE;
     font-size: 1.3em;
     font-weight: 700;
     transition: color 0.5s linear, text-decoration 0.5s linear;
+  
   }
 
   .offcanvas-body button {
@@ -84,7 +91,6 @@ const Wrapper = styled(Navbar)`
     color: white !important;
     border: none;
     margin: 0em 2em;
-  
   }
 
   .navbar > .container-fluid {
@@ -95,25 +101,12 @@ const Wrapper = styled(Navbar)`
     }
   }
 
-  .offcanvas {
-    background-color: var(--background);
-  }
-
-  .offcanvas-header {
-    padding-left: 0;
-  }
-  .offcanvas-body {
-    padding-left: 2em;
-  }
-  .offcanvas-header .btn-close {
-    background-color: #fff;
-  }
   .navbar-toggler-icon {
     background-color: #fff;
     border-radius: 5px;
   }
 
-  .logo{
+  .logo {
     text-align: center;
     display: inline-flex;
     margin-left: 0;
@@ -137,13 +130,6 @@ const Wrapper = styled(Navbar)`
     top: 30px;
     background-color: #fff;
   }
-
-.offcanvas-body a {
-    color: var(--white);
-    font-weight: 600;
-    margin-bottom: 1em;
-    font-size: 1.3em;
-}
   
 
 `;

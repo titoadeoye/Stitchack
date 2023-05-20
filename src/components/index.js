@@ -13,6 +13,7 @@ import PageWrapper from "./PageWrapper";
 import SideNav from "./SideNav";
 import TopNav from "./TopNav";
 import SearchInput from "./SearchInput";
+import Customer from "./Customer";
 
 
 export {
@@ -30,5 +31,6 @@ export {
     PageWrapper,
     SideNav,
     TopNav,
-    SearchInput
+    SearchInput,
+    Customer
 }

@@ -1,6 +1,7 @@
 import { logo } from "../assets";
 import styled from "styled-components";
 import { TwitterIcon, FacebookIcon, InstagramIcon, LinkedinIcon, EmailIcon } from "../assets/svg";
+import { device } from "../constants";
 
 export default function Footer() {
     return (
@@ -20,7 +21,8 @@ export default function Footer() {
                     </LogoWrap>
 
                     <Copyrights>
-                        <p>@{new Date().getFullYear()} Stitchack | All rights reserved</p>
+                        <p>@{new Date().getFullYear()} Stitchack | </p>
+                        <p>All rights reserved</p>
                     </Copyrights>
                 </Text>
             </div>
@@ -37,7 +39,18 @@ const Wrapper = styled.footer`
         background:
         radial-gradient(var(--size) at 50% var(--size),#6251C3 99%,#0000 101%) calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100% no-repeat,
         radial-gradient(var(--size) at 50% 0px,#0000 99%,#A800AB 101%) 50% var(--size)/calc(4*var(--size)) 100% no-repeat;
+    
+        @media ${device.isSmallDevice} {
+            --size: 35px;
+            height: 140px;
+        }
+
+        @media ${device.mobileL} {
+            --size: 20px;
+            height: 110px;
+        }
     }
+
     .box + .box {
         background-repeat: repeat-x;
     }
@@ -53,18 +66,6 @@ const Wrapper = styled.footer`
         border: none;
     }
 `
-// const Wrapper = styled.footer`
-//     height: 50px;
-//     background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
-//     width: 100vw;
-
-//     & > div {
-//         display: flex;
-//         justify-content: space-between;
-//         height: 100%;
-//         padding: 0 10px;
-//     }
-// `;
 
 const Text = styled.div`
     display: flex;
@@ -73,7 +74,7 @@ const Text = styled.div`
     height: 60px;
     width: 100%;
     align-self: end;
-    gap: 30px;
+    align-items: center;
 `
 
 const Copyrights = styled.div`
@@ -84,6 +85,11 @@ const Copyrights = styled.div`
         font-size: 10px;
         color: #ddd;
         font-weight: lighter;
+        margin-bottom: 0;
+     }
+
+     @media ${device.isSmallDevice} {
+        flex-direction: column;
      }
 `;
 
@@ -92,8 +98,8 @@ const LogoWrap = styled.div`
     display: flex;
     gap: 30px;
     align-items: center;
-    
-    @media (max-width: 520px) {
+
+    @media (max-width: 650px) {
         flex-direction: column-reverse;
         gap: 0;
     }

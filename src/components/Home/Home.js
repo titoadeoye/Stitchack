@@ -36,14 +36,13 @@ const Button = styled.button`
     background: var(--white);
     border-radius: 10px;
     border: none;
-    color: var(--background);
+    color: #A800AB;
     font-weight: 700;
     font-size: 1.3em;
-    padding: 14px 70px;
+    padding: 15px 70px;
 
     @media (max-width: 460px) {
-            font-size: 0.9em;
             width: 74%;
-            padding: 9px;
+            padding: 15px 9px;
     }
 `

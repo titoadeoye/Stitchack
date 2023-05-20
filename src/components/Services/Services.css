@@ -16,7 +16,7 @@
     font-weight: 800;
     font-size: 30px;
     line-height: 35px;
-    padding: 1em 0;
+    padding: 1em;
     /* color: #FEFEFE; */
     color: var(--white);
 }
@@ -53,3 +53,8 @@
     color: var(--white);
 }
 
+@media (max-width: 550px) {
+    .service {
+        margin-bottom: 2.5em;
+    }
+}
