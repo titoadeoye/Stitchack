@@ -75,7 +75,6 @@ const H3 = styled.h3`
 
 const Wrapper = styled.div`
     padding: 20px;
-    // box-shadow: 1px 1px 1px 1px red;
     box-shadow: 2px 4px 8px 1px #eeeeee;
     border-radius: 5px;
     display: flex;
