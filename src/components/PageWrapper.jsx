@@ -21,6 +21,7 @@ const PageWrapper = ({ children, ...others }) => {
 const Wrapper = styled.div`
 	padding-inline: 30px;
 	padding-bottom: 120px;
+	margin-top: 100px;
 
 	margin-left: ${(props) => {
 		if (props.page === "landing" || props.isSmallDevice) {

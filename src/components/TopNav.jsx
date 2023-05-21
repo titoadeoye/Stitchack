@@ -57,6 +57,7 @@ const Nav = styled.nav`
     width: calc(100vw - ${props => props.theme.sideBarWidth});
     float: right;
     justify-content: space-between;
+	// background: #fafafa;
 
     @media ${device.laptop} {
 		width: calc(100vw - 175px);

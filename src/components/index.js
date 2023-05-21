@@ -15,6 +15,11 @@ import TopNav from "./TopNav";
 import SearchInput from "./SearchInput";
 import Customer from "./Customer";
 import Order from "./Order";
+import Explore from "./Explore";
+import OngoingOrders from "./OngoingOrders";
+import TodaysTask from "./TodaysTask";
+import Performance from "./Performance";
+import DueToday from "./DueToday";
 
 
 export {
@@ -34,5 +39,10 @@ export {
     TopNav,
     SearchInput,
     Customer,
-    Order
+    Order,
+    Explore,
+    OngoingOrders,
+    TodaysTask,
+    Performance,
+    DueToday
 }

@@ -6,11 +6,11 @@ export default function Order ({order}) {
         <Wrapper>
         <p>{id}</p>
         <p>{name}</p>
-        <p className="email">{email}</p>
+        <p className="email" title={email}>{email}</p>
         <p>{bill}</p>
         <p>{paid}</p>
         <p>{due}</p>
-        <p>{status}</p>
+        <Status status={status}>{status}</Status>
         </Wrapper>
     )
 };
@@ -44,4 +44,24 @@ const Wrapper = styled.li`
     .email {
         text-transform: lowercase;
     }
+`;
+
+const Status = styled.p`
+    text-align: center;
+    padding-block: 7px;
+    border-radius: 5px;
+    font-weight: 600;
+    color: ${(props) => (
+        props.status === "in progress" ? "#000000" :
+        props.status === "not started" ? "#E70000" : 
+        props.status === "completed" ? "#00700D" :
+        "yellow"
+    )
+    };
+    background-color: ${(props) => (
+        props.status === "in progress" ? "#EA5E0D" :
+        props.status === "not started" ? "#FFC0C0" : 
+        props.status === "completed" ? "#CCFAD0" :
+        "yellow"
+    )}
 `;
