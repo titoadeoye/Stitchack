@@ -16,6 +16,7 @@ const Login = React.lazy(() => import('./pages/Login'));
 const Register = React.lazy(() => import('./pages/Register'));
 const Home = React.lazy(() => import('./pages/Home'));
 const Customers = React.lazy(() => import('./pages/Customers'));
+const Orders = React.lazy(() => import('./pages/Orders'));
 
 
 
@@ -34,6 +35,7 @@ const GlobalStyle = createGlobalStyle`
         --services: #141414;
         // --reviews: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
         --reviews: #141414;
+        --secondaryColor: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
     }
 
     html{
@@ -233,6 +235,7 @@ function App() {
             services: "#141414",
             // variable colors
             text: "#FFFFFF",
+            secondaryColor: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
 
             // variables
             sideBarWidth: "250px",
@@ -254,6 +257,8 @@ function App() {
                             <Route path='app' element={<PagesWrapper />}>
                                 <Route index element={<Home />} />
                                 <Route path="customers" element={<Customers />} />
+                                <Route path="orders" element={<Orders />} />
+
                             </Route>
                             <Route path='*' element={<NoMatch />} />
 
