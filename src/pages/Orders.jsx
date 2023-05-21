@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { PageWrapper, Order } from "../components";
 import styled from "styled-components";
-import { CaretRightOutlined, CaretUpOutlined } from "@ant-design/icons";
+import { CaretRightOutlined, CaretUpOutlined, PlusCircleFilled } from "@ant-design/icons";
 import { device } from "../constants";
 
+
 export default function Orders() {
+    const date = new Date();
+    var currentDate = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
     const placeholder = [
         {
             id: 1,
@@ -12,7 +15,7 @@ export default function Orders() {
             email: "ayojohnson@gmail.com",
             bill: "12,000",
             paid: "6,000",
-            due: new Date().getDate(),
+            due: currentDate,
             status: "in progress"
         },
         {
@@ -21,7 +24,7 @@ export default function Orders() {
             email: "dorcasthedork@gmail.com",
             bill: "7,000",
             paid: "7,000",
-            due: new Date().getDate(),
+            due: currentDate,
             status: "completed"
         },
         {
@@ -30,7 +33,7 @@ export default function Orders() {
             email: "jimohibrahim@gmail.com",
             bill: "9,000",
             paid: "9,000",
-            due: new Date().getDate(),
+            due: currentDate,
             status: "completed"
         },
         {
@@ -39,7 +42,7 @@ export default function Orders() {
             email: "helen@gmail.com",
             bill: "11,000",
             paid: "6500",
-            due: new Date().getDate(),
+            due: currentDate,
             status: "Not started"
         },
         {
@@ -48,7 +51,7 @@ export default function Orders() {
             email: "lawrenceoyor@gmail.com",
             bill: "12,000",
             paid: "12, 000",
-            due: new Date().getDate(),
+            due: currentDate,
             status: "in progress"
         },
         {
@@ -57,7 +60,7 @@ export default function Orders() {
             email: "jide@yahoo.com",
             bill: "12,000",
             paid: "6000",
-            due: new Date().getDate(),
+            due: currentDate,
             status: "completed"
         },
 
@@ -76,34 +79,34 @@ export default function Orders() {
 
     return (
         <PageWrapper>
-            <H3>Customers</H3>
+            <H3>Orders</H3>
             <Filter>
                 <FilterButton>
-                Filter
-                {show ?
-                    <CaretRightOutlined onClick={() => setShow(false)} />
-                    : <CaretUpOutlined onClick={() => setShow(true)} />}
-            </FilterButton>
-            {show &&
-                <Filters>
-                    <Option
-                        query={query} id="in progress"
-                        onClick={() => query === "in progress" ? setQuery(null) : setQuery("in progress")}> in progress</Option>
-                    <Option
-                        query={query} id="completed"
-                        onClick={() => query === "completed" ? setQuery(null) : setQuery("completed")}>completed </Option>
-                    <Option
-                        query={query} id="not started"
-                        onClick={() => query === "not started" ? setQuery(null) : setQuery("not started")}>not started</Option>
-                </Filters>
-            }
+                    Filter
+                    {show ?
+                        <CaretRightOutlined onClick={() => setShow(false)} />
+                        : <CaretUpOutlined onClick={() => setShow(true)} />}
+                </FilterButton>
+                {show &&
+                    <Filters>
+                        <Option
+                            query={query} id="in progress"
+                            onClick={() => query === "in progress" ? setQuery(null) : setQuery("in progress")}> in progress</Option>
+                        <Option
+                            query={query} id="completed"
+                            onClick={() => query === "completed" ? setQuery(null) : setQuery("completed")}>completed </Option>
+                        <Option
+                            query={query} id="not started"
+                            onClick={() => query === "not started" ? setQuery(null) : setQuery("not started")}>not started</Option>
+                    </Filters>
+                }
             </Filter>
-            
+
             <Wrapper>
                 <Fields>
                     <p>Order#</p>
                     <p>name</p>
-                    <p>mobile</p>
+                    <p>Email</p>
                     <p>bill</p>
                     <p>payment made</p>
                     <p>due date</p>
@@ -115,6 +118,9 @@ export default function Orders() {
                     ))
                 }
             </Wrapper>
+            <Badge>
+                <PlusCircleFilled />
+            </Badge>
         </PageWrapper>
     )
 };
@@ -175,7 +181,7 @@ const FilterButton = styled.button`
     align-items: center;
     gap: 16px;
     padding: 0px 20px;
-    border-radius: 16px;
+    border-radius: 10px;
     background: ${props => props.theme.secondaryColor};
     color: white;
     font-weight: 600;
@@ -215,3 +221,21 @@ const Option = styled.div`
         height: 34px;
     }
 `;
+
+const Badge = styled.span`
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+
+    svg {
+        width: 65px;
+        height: 65px;
+        fill: ${props => props.theme.primaryColor};
+
+        
+        @media (max-width: 520px) {
+            width: 50px;
+            height: 50px;
+        }
+    }
+`
