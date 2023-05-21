@@ -105,6 +105,7 @@ const GlobalStyle = createGlobalStyle`
 
     h3 {
         font-weight: 700;
+        text-transform: capitalize;
     }
 
     /* A elements that don't have a class get default styles */
