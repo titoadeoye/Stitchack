@@ -39,7 +39,7 @@ const Wrapper = styled.div`
 			}
 		}};
 	}
-
+ 
 	@media ${device.isSmallDevice} {
 		padding-inline: 10px;
 	}

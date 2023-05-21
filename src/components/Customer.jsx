@@ -19,7 +19,6 @@ export default function Customer ({data}) {
 const Wrapper = styled.div`
     display: flex;
     gap: 20px;
-    // box-shadow: 1px 1px 1px 1px red;
     box-shadow: 2px 4px 8px 0 #eeeeee;
     padding: 15px;
     border-radius: 5px;

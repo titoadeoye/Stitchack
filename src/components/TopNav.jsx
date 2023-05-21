@@ -64,6 +64,7 @@ const Nav = styled.nav`
 
     @media ${device.isSmallDevice} {
         width: 100%;
+		padding-inline: 10px;
     }
 
 	.burger {

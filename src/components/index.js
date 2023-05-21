@@ -14,6 +14,7 @@ import SideNav from "./SideNav";
 import TopNav from "./TopNav";
 import SearchInput from "./SearchInput";
 import Customer from "./Customer";
+import Order from "./Order";
 
 
 export {
@@ -32,5 +33,6 @@ export {
     SideNav,
     TopNav,
     SearchInput,
-    Customer
+    Customer,
+    Order
 }

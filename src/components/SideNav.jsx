@@ -52,7 +52,7 @@ const SideNav = ({ isSideNavOpen, setIsSideNavOpen }) => {
 							Customers
 						</NavItem>
 					</NavLink>
-					<NavLink to="/app">
+					<NavLink to="/app/orders">
 						<NavItem>
 							<AccountBookOutlined />
 							Orders
@@ -120,8 +120,6 @@ const NavItems = styled.ul`
 		text-decoration: none;
 		color: inherit;
 	}
-
-	
 `;
 
 
@@ -155,6 +153,7 @@ const NavItem = styled.li`
 		padding-block: 20px 0;
 		font-size: 1.25rem;
 	}
+
 `;
 
 const Logout = styled.p`
