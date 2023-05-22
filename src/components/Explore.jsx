@@ -1,17 +1,19 @@
 import { FolderViewOutlined, MoneyCollectOutlined, UserAddOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { device } from "../constants";
+import { useNavigate } from "react-router-dom";
  
 export default function Explore() {
+  const navigate = useNavigate();
    return (
       <Wrapper>
          <H3>Explore</H3>
          <Badges>
-            <Badge bg="orange">
+            <Badge bg="orange" onClick={() => navigate("customers/add")}>
                <UserAddOutlined />
                <p>Add Customer</p>
             </Badge>
-            <Badge bg="limegreen">
+            <Badge bg="limegreen" onClick={() => navigate("customers")}>
                <FolderViewOutlined />
                <p>view customer</p>
 
@@ -62,6 +64,7 @@ const Badge = styled.div`
    align-items: center;
    justify-content: center;
    filter: contrast(0.95);
+   cursor: pointer;
 
    @media (max-width: 1200px) {
       width: auto;

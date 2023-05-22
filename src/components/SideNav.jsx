@@ -64,7 +64,7 @@ const SideNav = ({ isSideNavOpen, setIsSideNavOpen }) => {
 							Add Tasks
 						</NavItem>
 					</NavLink>
-					<NavLink to="/app">
+					<NavLink to="/app/catalogue">
 						<NavItem>
 							<BookOutlined />
 							Catalogue
