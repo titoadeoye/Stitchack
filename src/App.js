@@ -23,10 +23,10 @@ const AddCustomer = React.lazy(() => import('./pages/AddCustomer'));
 
 const GlobalStyle = createGlobalStyle`
     :root {
-        //   --primaryColor: #A800AB,
         --primaryColor: #141414,
         --black: #000000;
-        --white: #f6e5f7;
+        // --white: #f6e5f7;
+        --white: #ffffff;
         --grey: #AFAFAF;
         --value: 10px;
         font-size: 62.5%;
@@ -226,7 +226,7 @@ function App() {
         () => ({
             // colors
             black: "#000000",
-            white: "#f6e5f7",
+            white: "#fff",
             grey: "#AFAFAF",
             red: "#D32600",
             //   primaryColor: "#A800AB",

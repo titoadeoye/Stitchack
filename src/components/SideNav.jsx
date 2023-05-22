@@ -130,7 +130,7 @@ const NavItem = styled.li`
 	font-weight: 700;
 	font-size: 1.3rem;
 	align-items: center;
-	padding-block: 30px 0;
+	padding-block: 20px;
 
 	svg {
 		margin-right: 10px;

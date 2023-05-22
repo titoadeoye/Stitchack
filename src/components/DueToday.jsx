@@ -91,7 +91,7 @@ const Row = styled.div`
    }
 
    h4 {
-    font-size: 17px;
+    font-size: 14px;
     margin: 0;
    }
 
