@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { female, male } from "../assets";
 import { PageWrapper, Customer } from "../components";
+import { PlusCircleFilled } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 export default function Customers() {
     const placeholder = [
@@ -54,7 +56,9 @@ export default function Customers() {
             name: "John Doe",
             phoneNumber: "+234 8000000000"
         },
-    ]
+    ];
+    const navigate = useNavigate();
+
     return (
         <PageWrapper>
             <H3>Customers</H3>
@@ -65,6 +69,9 @@ export default function Customers() {
                     ))
                 }
             </Wrapper>
+            <Badge onClick={() => navigate("add")}>
+                <PlusCircleFilled />
+            </Badge>
         </PageWrapper>
     )
 };
@@ -80,4 +87,23 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 30px;
-`
+`;
+
+const Badge = styled.span`
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    cursor: pointer;
+
+    svg {
+        width: 65px;
+        height: 65px;
+        fill: ${props => props.theme.primaryColor};
+
+        
+        @media (max-width: 520px) {
+            width: 50px;
+            height: 50px;
+        }
+    }
+`;

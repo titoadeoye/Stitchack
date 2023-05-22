@@ -226,6 +226,7 @@ const Badge = styled.span`
     position: absolute;
     bottom: 30px;
     right: 20px;
+    cursor: pointer;
 
     svg {
         width: 65px;
@@ -238,4 +239,4 @@ const Badge = styled.span`
             height: 50px;
         }
     }
-`
+`;
