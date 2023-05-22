@@ -1,16 +1,16 @@
 import styled from "styled-components"
 
-export default function Order ({order}) {
-    const {id, name, email, bill, paid, due, status} = order;
+export default function Order({ order }) {
+    const { id, name, email, bill, paid, due, status } = order;
     return (
         <Wrapper>
-        <p>{id}</p>
-        <p>{name}</p>
-        <p className="email" title={email}>{email}</p>
-        <p>{bill}</p>
-        <p>{paid}</p>
-        <p>{due}</p>
-        <Status status={status}>{status}</Status>
+            <p>{id}</p>
+            <p>{name}</p>
+            <p className="email" title={email}>{email}</p>
+            <p>{bill}</p>
+            <p>{paid}</p>
+            <p>{due}</p>
+            <Status status={status}>{status}</Status>
         </Wrapper>
     )
 };
@@ -53,15 +53,14 @@ const Status = styled.p`
     font-weight: 600;
     color: ${(props) => (
         props.status === "in progress" ? "#000000" :
-        props.status === "not started" ? "#E70000" : 
-        props.status === "completed" ? "#00700D" :
-        "yellow"
-    )
-    };
+            props.status === "not started" ? "#E70000 !important" :
+                props.status === "completed" ? "#00700D !important" :
+                    "yellow"
+    )};
     background-color: ${(props) => (
         props.status === "in progress" ? "#EA5E0D" :
-        props.status === "not started" ? "#FFC0C0" : 
-        props.status === "completed" ? "#CCFAD0" :
-        "yellow"
-    )}
+            props.status === "not started" ? "#FFC0C0" :
+                props.status === "completed" ? "#CCFAD0" :
+                    "yellow"
+    )};
 `;

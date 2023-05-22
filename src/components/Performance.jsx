@@ -1,26 +1,26 @@
 import styled from "styled-components";
 
-export default function Performance () {
-    return (
-        <Wrapper>
-        <H3>Today's performance</H3>
-        <Badges>
-           <Badge>
-            <h2>10</h2>
-              <p>Add Customer</p>
-           </Badge>
-           <Badge>
-           <h2>4</h2>
-              <p>view customer</p>
-           </Badge>
-           <Badge >
-           <h2>&#8358;25k</h2>
-              <p>Payment</p>
+export default function Performance() {
+   return (
+      <Wrapper>
+         <H3>Today's performance</H3>
+         <Rows>
+            <Row>
+               <h2>10</h2>
+               <p>Add Customer</p>
+            </Row>
+            <Row>
+               <h2>4</h2>
+               <p>view customer</p>
+            </Row>
+            <Row >
+               <h2>&#8358;25k</h2>
+               <p>Payment</p>
 
-           </Badge>
-        </Badges>
-     </Wrapper>
-    )
+            </Row>
+         </Rows>
+      </Wrapper>
+   )
 };
 
 const H3 = styled.h3`
@@ -32,16 +32,17 @@ const Wrapper = styled.div`
    padding: 20px;
    box-shadow: 2px 4px 8px 1px #eeeeee;
    border-radius: 5px;
+   margin-bottom: 3em;
 `;
 
-const Badges = styled.div`
+const Rows = styled.div`
    display: flex;
    width: 100%;
    gap: 20px;
    flex-direction: column;
 `;
 
-const Badge = styled.div`
+const Row = styled.div`
    height: 50px;
    box-shadow: 2px 4px 8px 1px #eeeeee;
    border-radius: 5px;

@@ -39,7 +39,6 @@ const Data = styled.div`
     }
 
     .colored {
-        // color: #A800AB;
         background: ${props => props.theme.secondaryColor};
         -webkit-text-fill-color: transarent;
         -webkit-background-clip: text;
