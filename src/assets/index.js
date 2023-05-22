@@ -64,6 +64,7 @@ export {
     satin,
     silk,
     skirt,
+    styles,
     top,
     trouser,
     twoPiece,
