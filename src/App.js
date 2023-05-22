@@ -5,7 +5,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import './App.css';
 import { useMediaQuery } from "react-responsive";
 import { Outlet } from 'react-router-dom';
-import { Loader, SideNav, TopNav } from './components';
+import { Loader, SideNav, TopNav, PageWrapper } from './components';
 import { device } from './constants';
 
 // import Maintenance from "./pages/Maintenance/Maintenance";
@@ -17,6 +17,7 @@ const Register = React.lazy(() => import('./pages/Register'));
 const Home = React.lazy(() => import('./pages/Home'));
 const Customers = React.lazy(() => import('./pages/Customers'));
 const Orders = React.lazy(() => import('./pages/Orders'));
+const AddCustomer = React.lazy(() => import('./pages/AddCustomer'));
 
 
 
@@ -248,16 +249,24 @@ function App() {
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
                 <Router>
-                    <Suspense fallback={<Loader />}>
+                    <Suspense fallback={
+                        <PageWrapper>
+                            <Loader />
+                        </PageWrapper>
+                    }>
 
                         <Routes>
 
-                            <Route path='/' element={<Landing />} />\
-                            <Route path='register' element={<Register />} />\
-                            <Route path='signin' element={<Login />} />\
+                            <Route path='/' element={<Landing />} />
+                            <Route path='register' element={<Register />} />
+                            <Route path='signin' element={<Login />} />
                             <Route path='app' element={<PagesWrapper />}>
                                 <Route index element={<Home />} />
-                                <Route path="customers" element={<Customers />} />
+                                <Route path="customers" >
+                                    <Route index element={<Customers />} />
+                                    <Route path="add" element={<AddCustomer />} />
+                                </Route>
+
                                 <Route path="orders" element={<Orders />} />
 
                             </Route>
