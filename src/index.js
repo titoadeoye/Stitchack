@@ -1,61 +1,40 @@
-import reviewer1 from './reviewer1.png';
-import reviewer2 from './reviewer2.png';
-import reviewer3 from './reviewer3.png';
-import logo from './logo.png';
-import bg1 from './bg1.png';
-import bg from './bg.png';
-import female from "./female.jpeg";
-import male from "./male.jpeg";
-import styles from "./style.png";
-import fabric from "./fabric.png";
-import ankara from "./ankara.png";
-import blackDress from "./black-dress.jpg";
-import blouse from "./blouse.webp";
-import chiffon from "./chiffon.png";
-import crepe from "./crepe.png";
-import damask from "./damask.png";
-import lace from "./lace.png";
-import linen from "./linen.webp";
-import lycra from "./lycra.png";
-import satin from "./satin.png";
-import silk from "./silk.png";
-import skirt from "./skirt.webp";
-import top from "./top.png";
-import trouser from "./trouser.webp";
-import twoPiece from "./two-piece.jpg";
-import velvet from "./velvet.png";
-import wedding from "./wedding-dress.jpg";
-import denim from "./denim.png";
-import cotton from "./cotton.png";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import './index.css';
+import App from './App';
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import UserProvider from "./context/UserContext";
 
-export {
-    reviewer1,
-    reviewer2,
-    reviewer3,
-    logo,
-    bg,
-    bg1,
-    female,
-    male,
-    styles,
-    fabric,
-    ankara,
-    blackDress,
-    blouse,
-    chiffon,
-    crepe,
-    damask,
-    lace,
-    linen,
-    lycra,
-    satin,
-    silk,
-    skirt,
-    top,
-    trouser,
-    twoPiece,
-    velvet,
-    wedding,
-    denim,
-    cotton
-}
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals';
+
+
+const queryClient = new QueryClient();
+
+queryClient.setDefaultOptions({
+  queries: {
+    refetchOnWindowFocus: false,
+  },
+});
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <UserProvider>
+
+      <QueryClientProvider client={queryClient}>
+        <App />
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </UserProvider>
+  </React.StrictMode>
+);
+
+
+serviceWorkerRegistration.unregister();
+
+reportWebVitals();

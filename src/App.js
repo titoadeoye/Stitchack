@@ -18,6 +18,9 @@ const Home = React.lazy(() => import('./pages/Home'));
 const Customers = React.lazy(() => import('./pages/Customers'));
 const Orders = React.lazy(() => import('./pages/Orders'));
 const AddCustomer = React.lazy(() => import('./pages/AddCustomer'));
+const Catalogue = React.lazy(() => import('./pages/Catalogue'));
+const Styles = React.lazy(() => import('./pages/Styles'));
+const Fabric = React.lazy(() => import('./pages/Fabric'));
 
 
 
@@ -222,63 +225,67 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-    const theme = useMemo(
-        () => ({
-            // colors
-            black: "#000000",
-            white: "#fff",
-            grey: "#AFAFAF",
-            red: "#D32600",
-            //   primaryColor: "#A800AB",
-            primaryColor: "#141414",
-            //   background: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
-            background: "#141414",
-            // services: "linear-gradient(90.32deg, #8F00FF 0.28%, rgba(143, 0, 255, 0) 99.72%), #764ABC",
-            services: "#141414",
-            // variable colors
-            text: "#FFFFFF",
-            secondaryColor: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
+	const theme = useMemo(
+	() => ({
+			// colors
+			black: "#000000",
+			white: "#fff",
+			grey: "#AFAFAF",
+			red: "#D32600",
+			//   primaryColor: "#A800AB",
+			primaryColor: "#141414",
+			//   background: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
+			background: "#141414",
+			// services: "linear-gradient(90.32deg, #8F00FF 0.28%, rgba(143, 0, 255, 0) 99.72%), #764ABC",
+			services: "#141414",
+			// variable colors
+			text: "#FFFFFF",
+			secondaryColor: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
 
-            // variables
-            sideBarWidth: "250px",
-        }),
-        []
-    );
-    return (
-        <>
-            <ThemeProvider theme={theme}>
-                <GlobalStyle />
-                <Router>
-                    <Suspense fallback={
-                        <PageWrapper>
-                            <Loader />
-                        </PageWrapper>
-                    }>
+			// variables
+			sideBarWidth: "250px",
+	}),
+	[]
+	);
+	return (
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
+			<Router>
+				<Suspense fallback={
+					<PageWrapper>
+							<Loader />
+					</PageWrapper>
+				}>
 
-                        <Routes>
+					<Routes>
 
-                            <Route path='/' element={<Landing />} />
-                            <Route path='register' element={<Register />} />
-                            <Route path='signin' element={<Login />} />
-                            <Route path='app' element={<PagesWrapper />}>
-                                <Route index element={<Home />} />
-                                <Route path="customers" >
-                                    <Route index element={<Customers />} />
-                                    <Route path="add" element={<AddCustomer />} />
-                                </Route>
+						<Route path='/' element={<Landing />} />
+						<Route path='register' element={<Register />} />
+						<Route path='signin' element={<Login />} />
+						<Route path='app' element={<PagesWrapper />}>
+								<Route index element={<Home />} />
+								<Route path="customers" >
+										<Route index element={<Customers />} />
+										<Route path="add" element={<AddCustomer />} />
+								</Route>
+								<Route path="catalogue" >
+										<Route index element={<Catalogue />} />
+										<Route path="styles" element={<Styles />} />
+										<Route path="fabric" element={<Fabric />} />
+								</Route>
+								<Route path="orders" >
+										<Route index element={<Orders />} />
+										<Route path="add" element={<Orders />} />
+								</Route>
 
-                                <Route path="orders" element={<Orders />} />
+						</Route>
+						<Route path='*' element={<NoMatch />} />
 
-                            </Route>
-                            <Route path='*' element={<NoMatch />} />
-
-                        </Routes>
-                    </Suspense>
-                </Router>
-            </ThemeProvider>
-
-        </>
-    );
+					</Routes>
+				</Suspense>
+			</Router>
+		</ThemeProvider>
+	);
 }
 
 const PagesWrapper = () => {
