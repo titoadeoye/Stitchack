@@ -75,7 +75,7 @@ const Badge = styled.div`
       width: min-content;
   }
 
-   @media (max-width: 500px) {
+   @media (max-width: 620px) {
       width: 100%;
   }
 

@@ -1,8 +1,11 @@
 import { RightOutlined } from "@ant-design/icons";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-export default function Customer ({data}) {
+export default function Customer ({data, id}) {
     const {avatar, name, phoneNumber} = data;
+    const navigate = useNavigate();
+
 
     return (
         <Wrapper>
@@ -11,7 +14,16 @@ export default function Customer ({data}) {
                 <h4>{name}</h4>
                 <h4 className="colored" >{phoneNumber}</h4>
             </Data>
-            <RightOutlined />
+            <RightOutlined
+            onClick={() => { navigate(`/app/customer/${id}`, {
+                replace: true,
+                state: {
+                    foo: "bar",
+                    customer: data,
+                    key: id,
+                }
+            })} }
+             />
         </Wrapper>
     )
 }
@@ -28,6 +40,7 @@ const Wrapper = styled.div`
     svg {
         position: absolute;
         right: 15px;
+        cursor: pointer;
     }
 `;
 
