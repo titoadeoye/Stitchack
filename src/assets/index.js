@@ -27,6 +27,8 @@ import velvet from "./velvet.png";
 import wedding from "./wedding-dress.jpg";
 import denim from "./denim.png";
 import cotton from "./cotton.png";
+import ankaraDress from "./ankara.jpg";
+
 
 export {
     reviewer1,
@@ -57,5 +59,6 @@ export {
     velvet,
     wedding,
     denim,
-    cotton
+    cotton,
+    ankaraDress
 }
