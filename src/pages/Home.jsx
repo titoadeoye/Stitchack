@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PageWrapper, Explore, OngoingOrders, TodaysTask, Performance, DueToday} from "../components";
+import { PageWrapper, Explore, OngoingOrders, TodaysTask, Performance, DueToday, NewCustomers} from "../components";
 import { device } from "../constants";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
                 <Main>
                     <Explore />
                     <OngoingOrders />
-                    <TodaysTask />
+                    <NewCustomers />
                 </Main>
                 <SideBar>
                     <Performance />
