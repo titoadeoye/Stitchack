@@ -16,9 +16,9 @@ import Customer from "./Customer";
 import Order from "./Order";
 import Explore from "./Explore";
 import OngoingOrders from "./OngoingOrders";
-import TodaysTask from "./TodaysTask";
 import Performance from "./Performance";
 import DueToday from "./DueToday";
+import NewCustomers from "./NewCustomers";
 
 
 export {
@@ -40,7 +40,7 @@ export {
     Order,
     Explore,
     OngoingOrders,
-    TodaysTask,
     Performance,
-    DueToday
+    DueToday,
+    NewCustomers
 }

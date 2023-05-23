@@ -40,6 +40,7 @@ const Button = styled.button`
     font-weight: 700;
     font-size: 1.3em;
     padding: 13px 70px;
+    margin-top: 1em;
 
     @media (max-width: 460px) {
             width: 74%;
