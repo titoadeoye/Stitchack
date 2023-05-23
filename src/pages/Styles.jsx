@@ -1,6 +1,6 @@
 import { PageWrapper } from "../components";
 import { LeftOutlined } from "@ant-design/icons";
-import { blackDress, blouse, skirt, top, trouser, twoPiece, wedding } from "../assets";
+import { ankaraDress, blackDress, blouse, skirt, top, trouser, twoPiece, wedding } from "../assets";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { device } from "../constants";
@@ -12,11 +12,12 @@ export default function Styles() {
     return (
         <PageWrapper>
             <Back>
-                <LeftOutlined onClick={() => navigate(-1)} />
+                <LeftOutlined onClick={() => navigate("/app/catalogue")} />
 
             </Back>
             <H3>Styles</H3>
             <Wrapper>
+                <Style bg={ankaraDress}><p>Ankara</p></Style>
                 <Style bg={blouse}><p>Blouse</p></Style>
                 <Style bg={trouser}><p>Trouser</p></Style>
                 <Style bg={skirt}><p>Skirt</p></Style>

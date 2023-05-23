@@ -64,8 +64,8 @@ export default function Customers() {
             <H3>Customers</H3>
             <Wrapper>
                 {
-                    placeholder?.map(customer => (
-                        <Customer data={customer} />
+                    placeholder?.map((customer, key) => (
+                        <Customer data={customer} id={key} />
                     ))
                 }
             </Wrapper>

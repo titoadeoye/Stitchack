@@ -21,7 +21,7 @@ const AddCustomer = React.lazy(() => import('./pages/AddCustomer'));
 const Catalogue = React.lazy(() => import('./pages/Catalogue'));
 const Styles = React.lazy(() => import('./pages/Styles'));
 const Fabric = React.lazy(() => import('./pages/Fabric'));
-
+const Customer = React.lazy(() => import('./pages/Customer'));
 
 
 const GlobalStyle = createGlobalStyle`
@@ -268,6 +268,7 @@ function App() {
 										<Route index element={<Customers />} />
 										<Route path="add" element={<AddCustomer />} />
 								</Route>
+                                <Route path="customer/:id" element={<Customer />} />
 								<Route path="catalogue" >
 										<Route index element={<Catalogue />} />
 										<Route path="styles" element={<Styles />} />

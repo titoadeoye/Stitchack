@@ -12,7 +12,7 @@ export default function Fabric() {
     return (
         <PageWrapper>
             <Back>
-                <LeftOutlined onClick={() => navigate(-1)} />
+                <LeftOutlined onClick={() => navigate("/app/catalogue")} />
 
             </Back>
             <H3>Fabric</H3>
