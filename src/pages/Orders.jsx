@@ -3,6 +3,7 @@ import { PageWrapper, Order } from "../components";
 import styled from "styled-components";
 import { CaretRightOutlined, CaretUpOutlined, PlusCircleFilled } from "@ant-design/icons";
 import { device } from "../constants";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Orders() {
@@ -65,6 +66,7 @@ export default function Orders() {
         },
 
     ];
+    const navigate = useNavigate();
     const [query, setQuery] = useState(null);
     const [show, setShow] = useState(false);
     const filtered = (status) => {
@@ -118,7 +120,7 @@ export default function Orders() {
                     ))
                 }
             </Wrapper>
-            <Badge>
+            <Badge onClick={() => navigate("/app/orders/add")}>
                 <PlusCircleFilled />
             </Badge>
         </PageWrapper>
