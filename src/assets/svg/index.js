@@ -9,6 +9,8 @@ import { ReactComponent as MeasurementIcon } from "./measurement.svg";
 import { ReactComponent as TwitterIcon } from "./twitter.svg";
 import { ReactComponent as UploadIcon } from "./upload.svg";
 import { ReactComponent as BurgerIcon } from "./burger.svg";
+import { ReactComponent as CloseIcon } from "./close.svg";
+
 
 export {
     CatalogueIcon,
@@ -21,5 +23,6 @@ export {
     MeasurementIcon,
     TwitterIcon,
     UploadIcon,
-    BurgerIcon
+    BurgerIcon,
+    CloseIcon
 }
