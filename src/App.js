@@ -22,6 +22,7 @@ const Catalogue = React.lazy(() => import('./pages/Catalogue'));
 const Styles = React.lazy(() => import('./pages/Styles'));
 const Fabric = React.lazy(() => import('./pages/Fabric'));
 const Customer = React.lazy(() => import('./pages/Customer'));
+const AddOrder = React.lazy(() => import('./pages/AddOrder'));
 
 
 const GlobalStyle = createGlobalStyle`
@@ -37,7 +38,6 @@ const GlobalStyle = createGlobalStyle`
         --background: #141414;
         // --services: linear-gradient(90.32deg, #8F00FF 0.28%, rgba(143, 0, 255, 0) 99.72%), #764ABC;
         --services: #141414;
-        // --reviews: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
         --reviews: #141414;
         --secondaryColor: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
     }
@@ -227,18 +227,15 @@ const GlobalStyle = createGlobalStyle`
 function App() {
 	const theme = useMemo(
 	() => ({
-			// colors
 			black: "#000000",
 			white: "#fff",
 			grey: "#AFAFAF",
 			red: "#D32600",
-			//   primaryColor: "#A800AB",
 			primaryColor: "#141414",
 			//   background: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
 			background: "#141414",
 			// services: "linear-gradient(90.32deg, #8F00FF 0.28%, rgba(143, 0, 255, 0) 99.72%), #764ABC",
 			services: "#141414",
-			// variable colors
 			text: "#FFFFFF",
 			secondaryColor: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
 
@@ -263,22 +260,21 @@ function App() {
 						<Route path='register' element={<Register />} />
 						<Route path='signin' element={<Login />} />
 						<Route path='app' element={<PagesWrapper />}>
-								<Route index element={<Home />} />
-								<Route path="customers" >
-										<Route index element={<Customers />} />
-										<Route path="add" element={<AddCustomer />} />
-								</Route>
-                                <Route path="customer/:id" element={<Customer />} />
-								<Route path="catalogue" >
-										<Route index element={<Catalogue />} />
-										<Route path="styles" element={<Styles />} />
-										<Route path="fabric" element={<Fabric />} />
-								</Route>
-								<Route path="orders" >
-										<Route index element={<Orders />} />
-										<Route path="add" element={<Orders />} />
-								</Route>
-
+                            <Route index element={<Home />} />
+                            <Route path="customers" >
+                                <Route index element={<Customers />} />
+                                <Route path="add" element={<AddCustomer />} />
+                            </Route>
+                            <Route path="customer/:id" element={<Customer />} />
+                            <Route path="catalogue" >
+                                <Route index element={<Catalogue />} />
+                                <Route path="styles" element={<Styles />} />
+                                <Route path="fabric" element={<Fabric />} />
+                            </Route>
+                            <Route path="orders" >
+                                <Route index element={<Orders />} />
+                                <Route path="add" element={<AddOrder />} />
+                            </Route>
 						</Route>
 						<Route path='*' element={<NoMatch />} />
 
