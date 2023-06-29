@@ -95,6 +95,18 @@ p {
     margin: 0;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .offcanvas {
         background: var(--background);
