@@ -33,7 +33,8 @@ export default function DueToday() {
    return (
       <Wrapper>
          <H3>Orders Due today</H3>
-         <Rows>
+         <p>No data available</p>
+         {/* <Rows>
             {placeholder.slice(0, 4).map((item, key) => (
                <Row key={key}>
                   <div>
@@ -48,7 +49,7 @@ export default function DueToday() {
 
                </Row>
             ))}
-         </Rows>
+         </Rows> */}
       </Wrapper>
    )
 };

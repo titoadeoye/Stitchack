@@ -146,7 +146,7 @@ const Wrapper = styled.div`
 		outline: none;
 		font-style: normal;
 		font-weight: 700;
-		font-size: 0.9em;
+		font-size: 12px;
 		flex: 1;
         margin: 0;
 		letter-spacing: 1px;
@@ -163,7 +163,7 @@ const Wrapper = styled.div`
 		outline: none;
 		font-style: normal;
 		font-weight: 700;
-		font-size: 1em;
+		font-size: 12px;
 		flex: 1;
         margin: 0;
 		letter-spacing: 1px;
@@ -179,7 +179,7 @@ const Wrapper = styled.div`
 	input::placeholder {
 		font-style: normal;
 		font-weight: 700;
-		font-size: 0.8rem;
+		font-size: 12px;
 		color: #2b0548;
 	}
 	
@@ -227,7 +227,7 @@ const Wrapper = styled.div`
 		line-height: inherit;
 		font-style: normal;
 		font-weight: 700;
-		font-size: 0.9em;
+		font-size: 12px;
 		padding: 0 1em;
 		flex: 1;
         margin: 0;
@@ -263,7 +263,7 @@ const Wrapper = styled.div`
 		position: absolute;
 		left: var(--horizontal-padding);
 		bottom: calc((var(--error-font-size) + (var(--border-width) * 4)) * -1);
-		font-size: 0.8rem;
+		font-size: 12px;
 		margin-bottom: 0.5em;
 	}
 `;
@@ -273,7 +273,7 @@ const Label = styled.label`
 	align-items: center;
 	font-style: normal;
 	font-weight: 500;
-	font-size: 1rem;
+	font-size: 12px;
 	line-height: 1rem;
 	cursor: pointer;
 	position: relative;
@@ -294,7 +294,7 @@ const Label = styled.label`
 		position: absolute;
 		left: 50%;
 		bottom: -18px;
-		font-size: 0.8rem;
+		font-size: 12px;
 		transform: translateX(-50%);
 		width: 100%;
 	}

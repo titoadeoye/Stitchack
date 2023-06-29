@@ -1,18 +1,22 @@
 import { RightOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { avatar } from "../assets";
 
 export default function Customer ({data, id}) {
-    const {avatar, name, phoneNumber} = data;
+    const {firstname, lastname, email, phoneNumber} = data;
     const navigate = useNavigate();
 
 
     return (
         <Wrapper>
-            <Avatar src={avatar} alt="avatar" />
+            {data?.avatar ? <Avatar src={data?.avatar} alt="avatar" /> 
+            : <Avatar src={avatar} alt="avatar" />}
             <Data>
-                <h4>{name}</h4>
+                <h4>{firstname} {lastname}</h4>
+                <h4 className="colored" >{email}</h4>
                 <h4 className="colored" >{phoneNumber}</h4>
+
             </Data>
             <RightOutlined
             onClick={() => { navigate(`/app/customer/${id}`, {
