@@ -26,7 +26,7 @@ export default function NewCustomers() {
                     <H3>new customers</H3>
                     {loading && <LoadingComponemt />}
                     {customers ?
-                        customers?.data?.slice(-3).map(customer => (
+                        customers?.data?.slice(-3).reverse().map(customer => (
                             <Customer data={customer} />
                         )) : <p>No data available</p>
                     }
