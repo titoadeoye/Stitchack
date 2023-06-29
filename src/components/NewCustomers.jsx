@@ -1,54 +1,37 @@
 import styled from "styled-components";
-import { female, male } from "../assets";
-import {Customer} from ".";
+import { Customer, LoadingComponemt } from ".";
+import { useQuery } from "react-query";
+import { getCustomers } from "../api/users";
+import { useUserContext } from "../context/UserContext";
+
 
 export default function NewCustomers() {
-    const placeholder = [
+    const { user } = useUserContext();
+
+
+    const { data: customers, loading } = useQuery(
+        ["customers"],
+        () => user ? getCustomers(user?._id) : null,
         {
-            avatar: female,
-            name: "Jane doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: male,
-            name: "John Doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: female,
-            name: "Jane doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: male,
-            name: "John Doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: female,
-            name: "Jane doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: male,
-            name: "John Doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: female,
-            name: "Jane doe",
-            phoneNumber: "+234 8000000000"
-        },
-    ];
+            onSuccess: (res) => {return;},
+            onError: (err) => console.log(err),
+            retry: 3,
+        }
+    );
     return (
         <>
             <Wrapper>
-                <H3>new customers</H3>
-                {
-                    placeholder?.slice(0, 4).map(customer => (
-                        <Customer data={customer} />
-                    ))
-                }
+
+                <>
+                    <H3>new customers</H3>
+                    {loading && <LoadingComponemt />}
+                    {customers ?
+                        customers?.data?.slice(0, 4).map(customer => (
+                            <Customer data={customer} />
+                        )) : <p>No data available</p>
+                    }
+                </>
+
             </Wrapper>
         </>
     )

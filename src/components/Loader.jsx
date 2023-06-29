@@ -23,10 +23,10 @@ const Preloader = styled.span`
 	padding: 0px;
 	border-radius: 100%;
 	border: 2px solid;
-	border-top-color: rgba(20, 20, 20, 1);
-	border-bottom-color: rgba(20, 20, 20, 0.15);
-	border-left-color: rgba(20, 20, 20, 1);
-	border-right-color: rgba(20, 20, 20, 0.15);
+	border-top-color: rgba(255, 255, 255, 1);
+	border-bottom-color: rgba(255, 255, 255, 0.15);
+	border-left-color: rgba(255, 255, 255, 1);
+	border-right-color: rgba(255, 255, 255, 0.15);
 	-webkit-animation: ${btnLoader} 0.8s linear infinite;
 	animation: ${btnLoader} 0.8s linear infinite;
 `;

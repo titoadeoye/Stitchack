@@ -5,8 +5,9 @@ export default function OngoingOrders() {
     return (
         <Wrapper>
             <H3>ongoing orders</H3>
+            <p>No data available</p>
             <Rows>
-                <Row>
+                {/* <Row>
                     <div>
                         <p>Jane Doe</p>
                         <span>
@@ -25,7 +26,7 @@ export default function OngoingOrders() {
                         </span>
                     </div>
                     <RightOutlined />
-                </Row>
+                </Row> */}
                 
             </Rows>
         </Wrapper>

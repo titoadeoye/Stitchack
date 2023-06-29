@@ -19,7 +19,8 @@ import OngoingOrders from "./OngoingOrders";
 import Performance from "./Performance";
 import DueToday from "./DueToday";
 import NewCustomers from "./NewCustomers";
-
+import Empty from "./Empty";
+import LoadingComponemt from "./LoadingComponent";
 
 export {
     NavBar,
@@ -42,5 +43,7 @@ export {
     OngoingOrders,
     Performance,
     DueToday,
-    NewCustomers
+    NewCustomers,
+    Empty,
+    LoadingComponemt
 }
