@@ -6,15 +6,15 @@ export default function Performance() {
          <H3>Today's performance</H3>
          <Rows>
             <Row>
-               <h2>10</h2>
+               <h2>-</h2>
                <p>Add Customer</p>
             </Row>
             <Row>
-               <h2>4</h2>
+               <h2>-</h2>
                <p>view customer</p>
             </Row>
             <Row >
-               <h2>&#8358;25k</h2>
+               <h2>&#8358;-</h2>
                <p>Payment</p>
 
             </Row>

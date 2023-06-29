@@ -4,14 +4,23 @@ import { UserOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { device } from "../constants";
 import { BurgerIcon } from "../assets/svg";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useUserContext } from "../context/UserContext";
+import { NavDropdown } from "react-bootstrap";
+import { getUser } from "../api/users";
+import moment from "moment";
+import { avatar } from "../assets";
 
-export default function TopNav ({ isSmallDevice, setIsOpenOverlay, setIsSideNavOpen }) {
-	const {isLoggedIn } = useUserContext();
+export default function TopNav({ isSmallDevice, setIsOpenOverlay, setIsSideNavOpen }) {
+	const { isLoggedIn, user, setUser } = useUserContext();
+	// const {firstname, lastname, email, phoneNumber, dateCreated} = user && user;
+	useEffect(() => {
+		getUser(user?._id)
+			.then(res => {setUser(res.data) })
+	}, [])
 
 	return (
-          <Nav id="topNav" isLoggedIn={!!isLoggedIn}>
+		<Nav id="topNav" isLoggedIn={!!isLoggedIn}>
 			{isSmallDevice && (
 				<BurgerIcon
 					className="burger"
@@ -20,26 +29,45 @@ export default function TopNav ({ isSmallDevice, setIsOpenOverlay, setIsSideNavO
 					}}
 				/>
 			)}
-			
+
 
 			<div className="ml-auto">
 				{isSmallDevice && (
-					<Profile onClick={() => {return;}}>
+					<Profile onClick={() => { return; }}>
 						<SearchOutlined size={24} className="color-black" />
 					</Profile>
 				)}
 			</div>
 
-			
+
 			{/* {isLoggedIn && ( */}
-				<Link to="/app">
-					<Profile>
-						<UserOutlined size={24} className="color-black" />
-					</Profile>
-				</Link>
+			<NavDropdown title={
+				<Profile>
+					<UserOutlined size={24} className="color-black" />
+				</Profile>
+			} id="basic-nav-dropdown">
+				<NavDropdown.Item className="dropdown-wrap" href="#">
+					{user && (
+						<User>
+							<span>
+								{user?.avatar ? <Avatar src={user?.avatar} alt="avatar" />
+									: <Avatar src={avatar} alt="avatar" />}
+							</span>
+							<div>
+								<h3>{user?.firstname} {user?.lastname}</h3>
+								<p>{user?.email}</p>
+								<p>{user?.phoneNumber}</p>
+								<p>Started on {moment(user?.dateCreated).format("DD-MM-YY")}</p>
+
+							</div>
+						</User>
+					)}
+				</NavDropdown.Item>
+
+			</NavDropdown>
 			{/* )} */}
-		</Nav>  
-		
+		</Nav>
+
 	);
 };
 
@@ -75,6 +103,18 @@ const Nav = styled.nav`
 			fill: ${(props) => props.theme.primaryColor};
 		}
 	}
+
+	.dropdown-wrap {
+		width: 300px;
+		height: fit-content;
+		h3 {
+			font-size: 14px;
+		}
+		p {
+			font-size: 12px;
+			white-space: break-spaces;
+		}
+	}
 `;
 
 const Profile = styled.div`
@@ -92,3 +132,14 @@ const Profile = styled.div`
     }
 `;
 
+const User = styled.div`
+	display: flex;
+	gap: 7px;
+`;
+
+const Avatar = styled.img`
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+`;
