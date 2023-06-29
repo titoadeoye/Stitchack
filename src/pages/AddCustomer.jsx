@@ -12,6 +12,7 @@ import { useUserContext } from "../context/UserContext";
 
 export default function AddCustomer() {
     const { user } = useUserContext();
+    const [isLoading, setISLoading] = useState(false);
     const { isLoading: loading, mutate } = useMutation(addCustomer,
 
         {
@@ -80,6 +81,7 @@ export default function AddCustomer() {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={(values) => {
+                    setISLoading(true)
                     const { firstname, lastname, email, phoneNumber, address, gender, note, neck,
                         shoulder, chest, topLength, bust, thigh, trouserLength, hip, fullLength,
                         skirtLength, armWidth, waist, } = values;
@@ -91,8 +93,14 @@ export default function AddCustomer() {
                         firstname, lastname, email, phoneNumber, address, gender, note,
 
                     }
-                    console.log(data);
-                    mutate(user?._id, data);
+                    // console.log(data);
+                    addCustomer(user?._id, data).then(res => {
+                        setISLoading(false);
+                        fireSwalSuccess(res?.message)
+                    })
+                        .catch(() => {
+                            fireSwalError("Customer list could not update");
+                        })
                 }}>
                 {({
                     values,
@@ -318,8 +326,8 @@ export default function AddCustomer() {
                         <br />
 
                         <Button >
-                            <button type="submit" disabled={loading}>
-                                {loading ? <Loader /> : "Save"}
+                            <button type="submit" disabled={isLoading}>
+                                {isLoading ? <Loader /> : "Save"}
                             </button>
                         </Button>
                     </form>
