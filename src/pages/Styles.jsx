@@ -17,14 +17,14 @@ export default function Styles() {
             </Back>
             <H3>Styles</H3>
             <Wrapper>
-                <Style bg={ankaraDress}><p>Ankara</p></Style>
-                <Style bg={blouse}><p>Blouse</p></Style>
-                <Style bg={trouser}><p>Trouser</p></Style>
-                <Style bg={skirt}><p>Skirt</p></Style>
-                <Style bg={top}><p>Top</p></Style>
-                <Style bg={wedding}><p>Wedding</p></Style>
-                <Style bg={blackDress}><p>Black dress</p></Style>
-                <Style bg={twoPiece}><p>Two piece</p></Style>
+                <Style onClick={() => navigate("ankara")} bg={ankaraDress}><p>Ankara</p></Style>
+                <Style onClick={() => navigate("blouse")}  bg={blouse}><p>Blouse</p></Style>
+                <Style onClick={() => navigate("trouser")}  bg={trouser}><p>Trouser</p></Style>
+                <Style onClick={() => navigate("skirt")}  bg={skirt}><p>Skirt</p></Style>
+                <Style onClick={() => navigate("top")} bg={top}><p>Top</p></Style>
+                <Style onClick={() => navigate("wedding")} bg={wedding}><p>Wedding</p></Style>
+                <Style onClick={() => navigate("black-dress")} bg={blackDress}><p>Black dress</p></Style>
+                <Style onClick={() => navigate("two-piece")} bg={twoPiece}><p>Two piece</p></Style>
             </Wrapper>
         </PageWrapper>
     )
@@ -59,6 +59,7 @@ const Style = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 5px;
+    cursor: pointer;
 
     @media (max-width: 540px) {
         width: 200px;

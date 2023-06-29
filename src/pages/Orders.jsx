@@ -1,14 +1,28 @@
 import { useState } from "react";
-import { PageWrapper, Order } from "../components";
+import { PageWrapper, Order, Empty } from "../components";
 import styled from "styled-components";
 import { CaretRightOutlined, CaretUpOutlined, PlusCircleFilled } from "@ant-design/icons";
 import { device } from "../constants";
 import { useNavigate } from "react-router-dom";
+import { getOrders } from "../api/orders";
+import { useQuery } from "react-query";
+import { useUserContext } from "../context/UserContext";
 
 
 export default function Orders() {
+    const { user } = useUserContext();
     const date = new Date();
     var currentDate = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
+    const { data: orders } = useQuery(
+        ["orders"],
+        () => user ? getOrders(user?._id) : null,
+        {
+            onSuccess: (res) => console.log(res),
+            onError: (err) => console.log(err),
+            retry: 3,
+        }
+    );
+
     const placeholder = [
         {
             id: 1,
@@ -19,63 +33,20 @@ export default function Orders() {
             due: currentDate,
             status: "in progress"
         },
-        {
-            id: 2,
-            name: "dorcas paul",
-            email: "dorcasthedork@gmail.com",
-            bill: "7,000",
-            paid: "7,000",
-            due: currentDate,
-            status: "completed"
-        },
-        {
-            id: 3,
-            name: "jimoh ibrahim",
-            email: "jimohibrahim@gmail.com",
-            bill: "9,000",
-            paid: "9,000",
-            due: currentDate,
-            status: "completed"
-        },
-        {
-            id: 4,
-            name: "Helen king",
-            email: "helen@gmail.com",
-            bill: "11,000",
-            paid: "6500",
-            due: currentDate,
-            status: "Not started"
-        },
-        {
-            id: 5,
-            name: "lawrence oyor",
-            email: "lawrenceoyor@gmail.com",
-            bill: "12,000",
-            paid: "12, 000",
-            due: currentDate,
-            status: "in progress"
-        },
-        {
-            id: 6,
-            name: "jide aderele",
-            email: "jide@yahoo.com",
-            bill: "12,000",
-            paid: "6000",
-            due: currentDate,
-            status: "completed"
-        },
-
     ];
     const navigate = useNavigate();
     const [query, setQuery] = useState(null);
     const [show, setShow] = useState(false);
     const filtered = (status) => {
-        if (status) {
+        if (status && orders) {
             return placeholder.filter(order => {
                 return order?.status.toLowerCase() === status.toLowerCase()
             })
-        } else {
-            return placeholder;
+        } else if (orders) {
+            return orders;
+        }
+        else {
+            return null;
         }
     }
 
@@ -83,12 +54,12 @@ export default function Orders() {
         <PageWrapper>
             <H3>Orders</H3>
             <Filter>
-                <FilterButton>
+                {filtered(query) && <FilterButton>
                     Filter
                     {show ?
                         <CaretRightOutlined onClick={() => setShow(false)} />
                         : <CaretUpOutlined onClick={() => setShow(true)} />}
-                </FilterButton>
+                </FilterButton>}
                 {show &&
                     <Filters>
                         <Option
@@ -103,8 +74,7 @@ export default function Orders() {
                     </Filters>
                 }
             </Filter>
-
-            <Wrapper>
+            {filtered(query) ? <Wrapper>
                 <Fields>
                     <p>Order#</p>
                     <p>name</p>
@@ -120,6 +90,8 @@ export default function Orders() {
                     ))
                 }
             </Wrapper>
+                : <Empty />}
+
             <Badge onClick={() => navigate("/app/orders/add")}>
                 <PlusCircleFilled />
             </Badge>

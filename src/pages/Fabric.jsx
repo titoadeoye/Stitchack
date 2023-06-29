@@ -17,18 +17,18 @@ export default function Fabric() {
             </Back>
             <H3>Fabric</H3>
             <Wrapper>
-                <Style bg={lace}><p>Lace</p></Style>
-                <Style bg={satin}><p>Satin</p></Style>
-                <Style bg={silk}><p>Silk</p></Style>
-                <Style bg={crepe}><p>Crepe</p></Style>
-                <Style bg={lycra}><p>Lycra</p></Style>
-                <Style bg={chiffon}><p>Chiffon</p></Style>
-                <Style bg={damask}><p>Damask</p></Style>
-                <Style bg={ankara}><p>Ankara</p></Style>
-                <Style bg={denim}><p>Denim</p></Style>
-                <Style bg={velvet}><p>Velvet</p></Style>
-                <Style bg={cotton}><p>Cotton</p></Style>
-                <Style bg={linen}><p>Linen</p></Style>
+                <Style onClick={() => navigate("lace")} bg={lace}><p>Lace</p></Style>
+                <Style onClick={() => navigate("satin")} bg={satin}><p>Satin</p></Style>
+                <Style onClick={() => navigate("silk")} bg={silk}><p>Silk</p></Style>
+                <Style onClick={() => navigate("crepe")} bg={crepe}><p>Crepe</p></Style>
+                <Style onClick={() => navigate("lycra")} bg={lycra}><p>Lycra</p></Style>
+                <Style onClick={() => navigate("chiffon")} bg={chiffon}><p>Chiffon</p></Style>
+                <Style onClick={() => navigate("damask")} bg={damask}><p>Damask</p></Style>
+                <Style onClick={() => navigate("ankara")} bg={ankara}><p>Ankara</p></Style>
+                <Style onClick={() => navigate("denim")} bg={denim}><p>Denim</p></Style>
+                <Style onClick={() => navigate("velvet")} bg={velvet}><p>Velvet</p></Style>
+                <Style onClick={() => navigate("cotton")} bg={cotton}><p>Cotton</p></Style>
+                <Style onClick={() => navigate("linen")} bg={linen}><p>Linen</p></Style>
             
             </Wrapper>
         </PageWrapper>
@@ -64,6 +64,7 @@ const Style = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 5px;
+    cursor: pointer;
 
     @media (max-width: 540px) {
         width: 200px;

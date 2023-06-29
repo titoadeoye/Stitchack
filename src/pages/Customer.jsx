@@ -2,48 +2,32 @@ import { PageWrapper } from "../components";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { LeftOutlined } from "@ant-design/icons";
+import { avatar } from "../assets";
+import { useEffect, useState } from "react";
 
 export default function Customer() {
     const location = useLocation();
     const navigate = useNavigate();
     const { customer, key } = location?.state && location?.state;
-    const { avatar, name, phoneNumber } = customer;
+    const { firstname, lastname, email, gender, address, phoneNumber } = customer;
+    const [measurementsArray, setMeasurementsArray] = useState([]);
+    const [parts, setParts] = useState(["Neck", "Shoulder", "hip", "Wrist", "Thigh", "Across chest",
+        "Across back", "Waist",]);
 
-    const placeholder = [
-        {
-            part: "Neck",
-            size: 20
-        },
-        {
-            part: "Shoulder",
-            size: 34
-        },
-        {
-            part: "hip",
-            size: 42
-        },
-        {
-            part: "Wrist",
-            size: 15
-        },
-        {
-            part: "Thigh",
-            size: 21
-        },
-        {
-            part: "Across chest",
-            size: 21
-        },
-        {
-            part: "Across back",
-            size: 15
-        },
-        {
-            part: "Waist",
-            size: 26
-        },
+    useEffect(() => {
+        const arr = [Object.entries(customer?.measurements)];
+        setMeasurementsArray(arr);
+        const newArray = [];
+        const measurements = Object.keys(customer?.measurements)
+        parts.map(part => {
+            if (!(measurements.includes(part.toLowerCase()))) {
+                newArray.push(part)
+            }
+        })
+        setParts(newArray)
 
-    ];
+    }
+        , [customer?.measurements])
 
     return (
         <PageWrapper>
@@ -52,18 +36,34 @@ export default function Customer() {
 
             </Back>
             <Wrapper>
-                <Avatar src={avatar} alt="avatar" />
+                {customer?.avatar ? <Avatar src={customer?.avatar} alt="avatar" />
+                    : <Avatar src={avatar} alt="avatar" />}
                 <Data>
-                    <h4>{name}</h4>
-                    <h4 className="colored" >Serial #{key}</h4>
+                    <h4 className="bold">{firstname} {lastname}</h4>
+                    <h4 className="capitalize">{gender}</h4>
+                    <h4>{email}</h4>
+                    <h4>{phoneNumber}</h4>
+                    <h4 className="bold">{customer?.note && `Note:`}</h4>
+                    <h4>{customer?.note && `${customer?.note}`}</h4>
+                    <h4 className="colored" >Serial #{key?.slice(0, 3)}</h4>
                 </Data>
             </Wrapper>
             <H3>Measurements</H3>
             <Measurements>
-                {placeholder?.map((measurement, key) =>
+                {measurementsArray?.map((measurement, key) =>
                     <Row id={`measurement-jud-${key}`}>
-                        <p>{measurement?.part}</p>
-                        <span>{measurement?.size}</span>
+                        <p>{measurement[0][0]}</p>
+                        <span>{measurement[0][1]}</span>
+                    </Row>
+                )}
+                {parts?.map((measurement, key) =>
+                    <Row id={`measurement-jud-${key}`}>
+                        <p>{measurement}</p>
+                        <span>{
+                            customer?.measurements && measurement in customer?.measurements
+                                ? `${customer?.measurements?.measurement}`
+                                : "-"
+                        }</span>
                     </Row>
                 )}
             </Measurements>
@@ -130,7 +130,7 @@ const Wrapper = styled.div`
     padding: 15px;
     border-radius: 5px;
     position: relative;
-    align-items: center;
+    // align-items: center;
     margin-bottom: 3em;
 
     svg {
@@ -144,7 +144,6 @@ const Data = styled.div`
     h4 {
         color: #141414;
         font-size: 13px;
-        font-weight: 600;
     }
 
     .colored {

@@ -1,74 +1,41 @@
 import styled from "styled-components";
-import { female, male } from "../assets";
-import { PageWrapper, Customer } from "../components";
+import { PageWrapper, Customer, Empty } from "../components";
 import { PlusCircleFilled } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
+import { getCustomers } from "../api/users";
+import { useUserContext } from "../context/UserContext";
 
 export default function Customers() {
-    const placeholder = [
-        {
-            avatar: female,
-            name: "Jane doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: male,
-            name: "John Doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: female,
-            name: "Jane doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: male,
-            name: "John Doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: female,
-            name: "Jane doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: male,
-            name: "John Doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: female,
-            name: "Jane doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: male,
-            name: "John Doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: female,
-            name: "Jane doe",
-            phoneNumber: "+234 8000000000"
-        },
-        {
-            avatar: male,
-            name: "John Doe",
-            phoneNumber: "+234 8000000000"
-        },
-    ];
+    const { user } = useUserContext();
     const navigate = useNavigate();
+
+
+    const { data: customers } = useQuery(
+        ["customers"],
+        () => user ? getCustomers(user?._id) : null,
+        {
+            onSuccess: (res) => {return;},
+            onError: (err) => console.log(err),
+            retry: 3,
+        }
+    );
 
     return (
         <PageWrapper>
             <H3>Customers</H3>
-            <Wrapper>
-                {
-                    placeholder?.map((customer, key) => (
-                        <Customer data={customer} id={key} />
-                    ))
-                }
-            </Wrapper>
+            {
+                customers?.data?.length ? (
+                    <Wrapper>
+                        {
+                            customers?.data?.map((customer, key) => (
+                                <Customer data={customer} id={customer?.cid} />
+                            ))
+                        }
+                    </Wrapper>
+                ) : <Empty />
+            }
+
             <Badge onClick={() => navigate("add")}>
                 <PlusCircleFilled />
             </Badge>

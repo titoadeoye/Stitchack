@@ -168,18 +168,13 @@ const Wrapper = styled.div`
     }
 
     &:before {
-        border-width: 200px;
-        border-width: 200px;
+        border-width: 150px;
         border-color: transparent #2b0548 #2b0548 transparent;
         bottom: 0px;
         right: 0px;
 
         @media (max-width: 900px) {
-            border-width: 150px;
-        }
-
-        @media (max-width: 900px) {
-            border-width: 120px;
+            border-width: 100px;
         }
     }
 
@@ -221,18 +216,18 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
-border: none;
-display: flex;
-margin: auto;
-padding: 10px 30px;
-font-weight: 800;
-background-color: #2b0548;
-color: wheat;
-border-radius: 5px;
+    border: none;
+    display: flex;
+    margin: auto;
+    padding: 10px 30px;
+    font-weight: 800;
+    background-color: #2b0548;
+    color: wheat;
+    border-radius: 5px;
 `;
 
 const Text = styled.h6`
-    font-size: 0.8em;
+    font-size: 12px;
     color: #000;
     margin-top: 2em;
     text-align: center;
@@ -242,6 +237,7 @@ const Text = styled.h6`
         text-decoration: none;
         color: rgb(43, 5, 72);
         font-weight: 600;
+        font-size: 12px;
 
         &:hover {
             text-decoration: underline;
