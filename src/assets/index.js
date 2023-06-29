@@ -28,6 +28,10 @@ import wedding from "./wedding-dress.jpg";
 import denim from "./denim.png";
 import cotton from "./cotton.png";
 import ankaraDress from "./ankara.jpg";
+import empty1 from "./empty1.jpg";
+import empty2 from "./empty2.jpg";
+import avatar from "./avatar.png";
+
 
 
 export {
@@ -60,5 +64,8 @@ export {
     wedding,
     denim,
     cotton,
-    ankaraDress
+    ankaraDress,
+    empty1,
+    empty2,
+    avatar
 }
