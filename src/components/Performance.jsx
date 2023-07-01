@@ -1,17 +1,22 @@
 import styled from "styled-components";
+import { useUserContext } from "../context/UserContext";
+
 
 export default function Performance() {
+   const {user} = useUserContext();
+
+   
    return (
       <Wrapper>
          <H3>Today's performance</H3>
          <Rows>
             <Row>
                <h2>-</h2>
-               <p>Add Customer</p>
+               <p>New Orders</p>
             </Row>
             <Row>
                <h2>-</h2>
-               <p>view customer</p>
+               <p>New customers</p>
             </Row>
             <Row >
                <h2>&#8358;-</h2>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Customer, LoadingComponemt } from ".";
+import { Customer, LoadingComponent } from ".";
 import { useQuery } from "react-query";
 import { getCustomers } from "../api/users";
 import { useUserContext } from "../context/UserContext";
@@ -9,27 +9,49 @@ export default function NewCustomers() {
     const { user } = useUserContext();
 
 
-    const { data: customers, loading } = useQuery(
+    const { data: customers, isLoading } = useQuery(
         ["customers"],
         () => user ? getCustomers(user?._id) : null,
         {
-            onSuccess: (res) => {return;},
+            onSuccess: () => { return; },
             onError: (err) => console.log(err),
             retry: 3,
         }
     );
+
+    if (isLoading) {
+        return (
+            <Wrapper>
+                <LoadingComponent />
+            </Wrapper>
+        )
+    }
+
     return (
         <>
             <Wrapper>
 
                 <>
                     <H3>new customers</H3>
-                    {loading && <LoadingComponemt />}
-                    {customers ?
-                        customers?.data?.slice(-3).reverse().map(customer => (
-                            <Customer data={customer} />
-                        )) : <p>No data available</p>
+                    {isLoading ? <LoadingComponent />
+                        : customers && customers.data.length > 0 ?
+                            <>
+                                {customers?.data?.slice(-4).reverse().map(customer => (
+                                    <Customer data={customer} />
+                                ))}
+                            </>
+
+                            : <p>No data available</p>
                     }
+                    {/* {customers && customers.data.length > 0 ?
+                        <>
+                            {customers?.data?.slice(-4).reverse().map(customer => (
+                                <Customer data={customer} />
+                            ))}
+                        </>
+
+                        : <p>No data available</p>
+                    } */}
                 </>
 
             </Wrapper>

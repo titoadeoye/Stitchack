@@ -20,7 +20,10 @@ import Performance from "./Performance";
 import DueToday from "./DueToday";
 import NewCustomers from "./NewCustomers";
 import Empty from "./Empty";
-import LoadingComponemt from "./LoadingComponent";
+import LoadingComponent from "./LoadingComponent";
+import PageLoader from "./PageLoader";
+import UploadImage from "./UploadImage";
+import ModalGroup from "./ModalGroup";
 
 export {
     NavBar,
@@ -45,5 +48,8 @@ export {
     DueToday,
     NewCustomers,
     Empty,
-    LoadingComponemt
+    LoadingComponent,
+    PageLoader,
+    UploadImage,
+    ModalGroup
 }

@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
-import { SearchOutlined } from "@ant-design/icons";
+import { EditOutlined, LogoutOutlined, SearchOutlined } from "@ant-design/icons";
 import { UserOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import { device } from "../constants";
+import { device, logout } from "../constants";
 import { BurgerIcon } from "../assets/svg";
 import React, { useEffect } from 'react';
 import { useUserContext } from "../context/UserContext";
@@ -11,7 +10,7 @@ import { getUser } from "../api/users";
 import moment from "moment";
 import { avatar } from "../assets";
 
-export default function TopNav({ isSmallDevice, setIsOpenOverlay, setIsSideNavOpen }) {
+export default function TopNav({ isSmallDevice, setIsOpenOverlay,setIsOpenModal, setIsSideNavOpen, setModalType }) {
 	const { isLoggedIn, user, setUser } = useUserContext();
 	// const {firstname, lastname, email, phoneNumber, dateCreated} = user && user;
 	useEffect(() => {
@@ -39,6 +38,9 @@ export default function TopNav({ isSmallDevice, setIsOpenOverlay, setIsSideNavOp
 				)}
 			</div>
 
+			<Profile onClick={() => logout()}>
+				<LogoutOutlined size={24} className="color-black" />
+			</Profile>
 
 			{/* {isLoggedIn && ( */}
 			<NavDropdown title={
@@ -50,8 +52,12 @@ export default function TopNav({ isSmallDevice, setIsOpenOverlay, setIsSideNavOp
 					{user && (
 						<User>
 							<span>
-								{user?.avatar ? <Avatar src={user?.avatar} alt="avatar" />
-									: <Avatar src={avatar} alt="avatar" />}
+								{user?.avatar ? <Avatar><img src={user?.avatar} alt="avatar" /></Avatar>
+									: <Avatar>
+										<img src={avatar} alt="avatar" />
+										<EditOutlinedIcon  onClick={() =>{ setIsOpenModal(true); setModalType("avatar")}} />
+									</Avatar>
+								}
 							</span>
 							<div>
 								<h3>{user?.firstname} {user?.lastname}</h3>
@@ -137,9 +143,23 @@ const User = styled.div`
 	gap: 7px;
 `;
 
-const Avatar = styled.img`
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
+const Avatar = styled.span`
+	position: relative;
+
+    img {
+		width: 45px;
+		height: 45px;
+		border-radius: 50%;
+		object-fit: cover;
+		border: 1px solid #141414;
+	}
+`;
+
+const EditOutlinedIcon = styled(EditOutlined)`
+	position: absolute;
+	bottom: 0;
+	right: 5px;
+    font-size: 17px;
+	color: purple;
+	cursor: pointer;
 `;

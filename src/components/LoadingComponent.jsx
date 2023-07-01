@@ -1,10 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
-const LoadingComponemt = () => {
+const LoadingComponent = () => {
 	return <Preloader />;
 };
 
-export default LoadingComponemt;
+export default LoadingComponent;
 
 const btnLoader = keyframes`
   from {
