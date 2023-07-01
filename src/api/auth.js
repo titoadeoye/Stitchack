@@ -7,7 +7,7 @@ const api = axios.create({
 		"Content-Type": "application/json",
 	},
 });
-
+ 
 export const signUp = (data) =>
 	api
 		.post("/", data)
