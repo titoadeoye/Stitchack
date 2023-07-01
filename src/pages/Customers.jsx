@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PageWrapper, Customer, Empty } from "../components";
+import { PageWrapper, Customer, Empty, LoadingComponent } from "../components";
 import { PlusCircleFilled } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
@@ -11,7 +11,7 @@ export default function Customers() {
     const navigate = useNavigate();
 
 
-    const { data: customers } = useQuery(
+    const { data: customers, isLoading } = useQuery(
         ["customers"],
         () => user ? getCustomers(user?._id) : null,
         {
@@ -21,11 +21,18 @@ export default function Customers() {
         }
     );
 
+    if(isLoading) 
+    <PageWrapper>
+        <LoadingComponent />
+    </PageWrapper>
+
+
     return (
         <PageWrapper>
             <H3>Customers</H3>
             {
-                customers?.data?.length ? (
+                isLoading ? <LoadingComponent />
+                 : customers?.data?.length ? (
                     <Wrapper>
                         {
                             customers?.data?.map((customer, key) => (

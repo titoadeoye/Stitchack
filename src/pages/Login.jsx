@@ -41,7 +41,7 @@ export default function Login() {
 		},
 		onError: (error) => {
 			console.log(error);
-            setError("Username/password is incorrect")
+            error.message ? setError(error.message) : setError("Username/password is incorrect")
             fireSwalError(error.message);
 			},
 	});
@@ -102,7 +102,7 @@ export default function Login() {
                                     span={"Remember me"}
                                 />
                             </Row>
-                            <Button type="submit">
+                            <Button type="submit" disabled={loading}>
                                 {loading ? <Loader /> : "Sign in"}
                             </Button>
 

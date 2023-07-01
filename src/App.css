@@ -107,6 +107,20 @@ p {
     display: none;
 }
 
+/* remove later */
+
+.ReactModal__Content .ReactModal__Content--after-open {
+    overflow: hidden !important;
+}
+
+.ReactModal__Overlay--after-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* end of tbr section */
+
 @media (max-width: 768px) {
     .offcanvas {
         background: var(--background);

@@ -41,6 +41,7 @@ export default function Customer() {
                 <Data>
                     <h4 className="bold">{firstname} {lastname}</h4>
                     <h4 className="capitalize">{gender}</h4>
+                    <h4 className="capitalize">{address}</h4>          
                     <h4>{email}</h4>
                     <h4>{phoneNumber}</h4>
                     <h4 className="bold">{customer?.note && `Note:`}</h4>

@@ -7,7 +7,7 @@ import App from './App';
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import UserProvider from "./context/UserContext";
-
+import ModalProvider from './context/ModalContext';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
@@ -24,13 +24,14 @@ queryClient.setDefaultOptions({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserProvider>
-
-      <QueryClientProvider client={queryClient}>
-        <App />
-        <ReactQueryDevtools />
-      </QueryClientProvider>
-    </UserProvider>
+    <ModalProvider>
+      <UserProvider>
+        <QueryClientProvider client={queryClient}>
+          <App />
+          <ReactQueryDevtools />
+        </QueryClientProvider>
+      </UserProvider>
+    </ModalProvider>
   </React.StrictMode>
 );
 

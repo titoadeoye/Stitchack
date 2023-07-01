@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PageWrapper, Order, Empty } from "../components";
+import { PageWrapper, Order, Empty, LoadingComponent } from "../components";
 import styled from "styled-components";
 import { CaretRightOutlined, CaretUpOutlined, PlusCircleFilled } from "@ant-design/icons";
 import { device } from "../constants";
@@ -13,7 +13,7 @@ export default function Orders() {
     const { user } = useUserContext();
     const date = new Date();
     var currentDate = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
-    const { data: orders } = useQuery(
+    const { data: orders, loading } = useQuery(
         ["orders"],
         () => user ? getOrders(user?._id) : null,
         {
@@ -50,6 +50,11 @@ export default function Orders() {
         }
     }
 
+    
+    if(loading) 
+    <PageWrapper>
+        <LoadingComponent />
+    </PageWrapper>
     return (
         <PageWrapper>
             <H3>Orders</H3>
@@ -74,7 +79,8 @@ export default function Orders() {
                     </Filters>
                 }
             </Filter>
-            {filtered(query) ? <Wrapper>
+            {filtered(query) ? 
+            <Wrapper>
                 <Fields>
                     <p>Order#</p>
                     <p>name</p>

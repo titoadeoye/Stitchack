@@ -132,7 +132,7 @@ export default function Register() {
                                     touched={touched.iAgree}
                                     className="policy"
                                 />
-                                <Button type="submit">
+                                <Button type="submit" disabled={loading}>
                                     {loading ? <Loader /> : "Sign up"}
                                 </Button>
 

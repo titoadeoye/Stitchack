@@ -5,10 +5,10 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import './App.css';
 import { useMediaQuery } from "react-responsive";
 import { Outlet } from 'react-router-dom';
-import { Loader, SideNav, TopNav, PageWrapper } from './components';
+import { ModalGroup, SideNav, TopNav, PageLoader } from './components';
 import { device } from './constants';
 import { useUserContext } from './context/UserContext';
- 
+import { useModalContext } from './context/ModalContext';
 // import Maintenance from "./pages/Maintenance/Maintenance";
 
 const NoMatch = React.lazy(() => import('./pages/NoMatch/NoMatch'));
@@ -37,9 +37,7 @@ const GlobalStyle = createGlobalStyle`
         --grey: #AFAFAF;
         --value: 10px;
         font-size: 62.5%;
-        // --background: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
         --background: #141414;
-        // --services: linear-gradient(90.32deg, #8F00FF 0.28%, rgba(143, 0, 255, 0) 99.72%), #764ABC;
         --services: #141414;
         --reviews: #141414;
         --secondaryColor: linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%);
@@ -235,9 +233,7 @@ function App() {
             grey: "#AFAFAF",
             red: "#D32600",
             primaryColor: "#141414",
-            //   background: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
             background: "#141414",
-            // services: "linear-gradient(90.32deg, #8F00FF 0.28%, rgba(143, 0, 255, 0) 99.72%), #764ABC",
             services: "#141414",
             text: "#FFFFFF",
             secondaryColor: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
@@ -249,12 +245,12 @@ function App() {
     );
     return (
         <ThemeProvider theme={theme}>
-            <GlobalStyle />
             <Router>
+                <GlobalStyle />
                 <Suspense fallback={
-                    <PageWrapper>
-                        <Loader />
-                    </PageWrapper>
+                    <Wrapper>
+                        <PageLoader />
+                    </Wrapper>
                 }>
 
                     <Routes>
@@ -262,6 +258,9 @@ function App() {
                         <Route path='/' element={<Landing />} />
                         <Route path='register' element={<Register />} />
                         <Route path='signin' element={<Login />} />
+                        <Route path='*' element={<NoMatch />} />
+
+
                         <Route path='app' element={<PagesWrapper />}>
                             <Route index element={<Home />} />
                             <Route path="customers" >
@@ -303,10 +302,11 @@ function App() {
                                 <Route path="add" element={<AddOrder />} />
                             </Route>
                         </Route>
-                        <Route path='*' element={<NoMatch />} />
+
 
                     </Routes>
                 </Suspense>
+                <ModalGroup />
             </Router>
         </ThemeProvider>
     );
@@ -317,18 +317,22 @@ const PagesWrapper = () => {
 
     const [isSideNavOpen, setIsSideNavOpen] = useState(false);
     const { user, isLoggedIn } = useUserContext();
+    const { setModalType, setIsOpenModal } = useModalContext();
     const navigate = useNavigate();
 
     useEffect(() => {
-		if (!user || !isLoggedIn) {
-            console.log(user, isLoggedIn)
-			navigate("/");
-		}
-	}, []);
-    
+        if (!user || !isLoggedIn) {
+            navigate("/");
+        }
+    }, []);
+
     return (
         <Container isSmallDevice={isSmallDevice}>
-            <TopNav isSmallDevice={isSmallDevice} setIsSideNavOpen={setIsSideNavOpen}
+            <TopNav
+                isSmallDevice={isSmallDevice}
+                setIsSideNavOpen={setIsSideNavOpen}
+                setModalType={setModalType}
+                setIsOpenModal={setIsOpenModal}
             />
             <SideNav
                 isSideNavOpen={isSideNavOpen}
@@ -339,6 +343,13 @@ const PagesWrapper = () => {
         </Container>
     );
 };
+
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 5em;
+`
 
 const Container = styled.div`
 	height: 100vh;

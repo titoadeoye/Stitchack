@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media (max-width: 950px) {
+  body .ReactModal__Content .ReactModal__Content--after-open {
+      color: red !important;
+      left: 50% !important;
+      width: 50% !important;
+  }
+  
+}

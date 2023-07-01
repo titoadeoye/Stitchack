@@ -3,25 +3,25 @@ import { Loader, PageWrapper } from "../components";
 import styled from "styled-components";
 import { useMutation } from "react-query";
 import { device, fireSwalError, fireSwalSuccess } from "../constants";
-import { useState } from "react";
 import * as Yup from "yup";
 import "yup-phone-lite";
 import { Formik } from "formik";
 import { useUserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 export default function AddCustomer() {
     const { user } = useUserContext();
-    const [isLoading, setISLoading] = useState(false);
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
     const { isLoading: loading, mutate } = useMutation(addCustomer,
-
         {
             onSuccess: (res) => {
-                // console.log(res);
                 fireSwalSuccess("Customer list has been updated");
+                navigate("/app/customers")
             },
             onError: (error) => {
-                console.log(error);
                 fireSwalError(error.message);
             },
         });
@@ -81,7 +81,7 @@ export default function AddCustomer() {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={(values) => {
-                    setISLoading(true)
+                    setIsLoading(true);
                     const { firstname, lastname, email, phoneNumber, address, gender, note, neck,
                         shoulder, chest, topLength, bust, thigh, trouserLength, hip, fullLength,
                         skirtLength, armWidth, waist, } = values;
@@ -93,14 +93,18 @@ export default function AddCustomer() {
                         firstname, lastname, email, phoneNumber, address, gender, note,
 
                     }
-                    // console.log(data);
-                    addCustomer(user?._id, data).then(res => {
-                        setISLoading(false);
-                        fireSwalSuccess(res?.message)
+                    console.log(data)
+                    // mutate(user?._id, data);
+                    addCustomer(user?._id, data)
+                    .then(res => {
+                        console.log(res);
+                        setIsLoading(false);
+                        fireSwalSuccess("Customer list has been updated");
+                        navigate("/app/customers");
                     })
-                        .catch(() => {
-                            fireSwalError("Customer list could not update");
-                        })
+                    .catch((error) => {
+                        fireSwalError(error.message);
+                    })
                 }}>
                 {({
                     values,
@@ -339,45 +343,6 @@ export default function AddCustomer() {
     )
 }
 
-const Input = styled.input`
-    --error-font-size: 1rem;
-   --border-width: 2px;
-
-    --horizontal-padding: 20px;
-	--verical-padding: 9px;
-
-    width: 100%;
-    margin-bottom: 3em;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    position: relative;
-
-    
-
-    &::placeholder {
-        color: #ccc;
-        font-weight: 700;
-        font-size: 10px;
-        text-transform: capitalize;
-        line-height: 25px;
-        margin: 0;
-    }
-
-    &::after {
-		content: "${(props) => props.touched && props.error}";
-		color: red;
-		font-weight: 600;
-		position: absolute;
-		left: var(--horizontal-padding);
-		bottom: calc((var(--error-font-size) + (var(--border-width) * 4)) * -1);
-		font-size: 0.8rem;
-		margin-bottom: 0.5em;
-        width: 200px;
-	}
-`
 
 const H3 = styled.h3`
     margin-bottom: 1.5em;
@@ -513,7 +478,7 @@ const InputWrap = styled.div`
 	}
 	
 `;
-
+ 
 const Measurement = styled.div`
     display: flex;
     justify-content: space-evenly;
