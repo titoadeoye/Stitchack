@@ -8,14 +8,14 @@ const api = axios.create({
 	},
 });
 
-// api.interceptors.response.use(undefined, (error) => {
-// 	if (
-// 		error.response.status === 401 ||
-// 		error.response.data.message === "401 Unauthorized"
-// 	) {
-// 		logout();
-// 	}
-// });
+api.interceptors.response.use(undefined, (error) => {
+	if (
+		error.response.status === 401 ||
+		error.response.data.message === "401 Unauthorized"
+	) {
+		logout();
+	}
+});
 
 export const getUser = (id) =>
 	api
