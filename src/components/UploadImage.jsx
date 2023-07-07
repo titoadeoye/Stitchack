@@ -1,69 +1,22 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { fireSwalSuccess, fireSwalError } from "../constants";
-import { useMutation } from "react-query";
 import { Loader } from ".";
-import * as Yup from "yup";
-import "yup-phone-lite";
-import { Formik } from "formik";
 import { uploadAvatar } from "../api/users";
 import { useUserContext } from "../context/UserContext";
-import { useNavigate } from "react-router-dom";
+import Dropzone from 'react-dropzone';
 
 export default function UploadImage() {
     const [image, setImage] = useState("");
-    const {user}  = useUserContext();
+    const { user } = useUserContext();
     const [isLoading, setIsLoading] = useState(false);
-    const MAX_FILE_SIZE = 512000;
-    const navigate = useNavigate();
+    const MAX_FILE_SIZE = 25600;
+    const [error, setError] = useState("");
 
-    const { isLoading: loading, mutate } = useMutation(uploadAvatar, {
-        onSuccess: (res) => {
-            fireSwalSuccess("Avatar updated!")
-        },
-        onError: (error) => {
-            fireSwalError(error.message);
-        },
-    });
+    function convertToBase64(file) {
 
-    const validFileExtension = { image: ['jpg', 'png'] };
-
-    function isValidFileType(name, type) {
-        return name && validFileExtension[type].includes(name.slice(-3))
-            || validFileExtension[type].includes(name.slice(-4))
-    }
-
-    function validateSize() {
-        const fi = document.getElementById("file");
-        if (fi.files.length > 0) {
-            for (const i = 0; i <= fi.files.length - 1; i++) {
-                let fsize = fi.files.item(i).size;
-                let file = Math.round((fsize / 1024));
-                // The size of the file.
-                return file && file <= 512;
-            }
-        }
-    }
-
-    const initialValues = { file: "" }
-
-    const validationSchema = Yup.object().shape({
-        file: Yup
-            .mixed()
-            .required("Required")
-        // .test("is-valid-type", "Not a valid image type",
-        //     value => value && isValidFileType(value.toLowerCase(), "image")
-
-        // )
-        // .test("is-valid-size", "Max allowed size is 500kb",
-        //     () => validateSize()
-        // )
-    });
-
-    function convertToBase64(e) {
-        
         var reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
+        reader.readAsDataURL(file);
         reader.onload = () => {
            // base64encoded string
             setImage(reader.result);
@@ -73,121 +26,120 @@ export default function UploadImage() {
         }
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        setIsLoading(true);
-        if (image) {
-            setIsLoading(true);
-            var data = {image: image};
-            uploadAvatar(user?._id, data)
-            .then(res => {
-                setIsLoading(false);
-                fireSwalSuccess("Avatar updated");
-                window.reload();
-            })
-            .catch((error) => {
-                fireSwalError(error.message);
-            })
-         } else {
-            setIsLoading(false);
+    function addFiles(files) {
+        if (files?.length > 1) {
+            setError("Max file number is 1");
+        } 
+
+         var file = files[0];
+        const validFormat = ["image/png", "image/jpeg", "image/jpg"];
+        const isFormatValid = validFormat.includes(file.type);
+        const isSizeValid = file.size <= MAX_FILE_SIZE;
+
+
+        if (isFormatValid && isSizeValid) {
+            setError("");
+            convertToBase64(file);
+        } else if (!isSizeValid) {
+            setError("Max file size is 25kb");
+        } else if (!isFormatValid) {
+            setError("Invalid file format");
         }
+
+        return;
+    }
+
+    function handleSubmit(e) {
+        setIsLoading(true);
+        e.preventDefault(); 
+        uploadAvatar(user?._id, {image: image})
+        .then(res => {
+            setIsLoading(false);   
+            fireSwalSuccess(res.message);
+            setImage("");
+        })
+        .catch(err => { setIsLoading(false); fireSwalError(err.message)})
     }
     return (
         <Wrapper>
+            <Form onSubmit={(e) => {handleSubmit(e) }}>
+                <h3>Upload Image</h3>
+                {
+                    image ? <img src={image} alt="avatar" width={100} height={100} />
+                        : <Padding></Padding>
+                }
+                <Box>
+                    <Dropzone onDrop={files => addFiles(files)}
+                        onDragOver={() => {
+                            var element = document.getElementById(`dropzone`)
+                            if (element) {
+                                element.classList.add("drag");
+                            }
+                        }}
+                        onDragLeave={() => {
+                            var element = document.getElementById(`dropzone`)
+                            if (element) {
+                                element.classList.remove("drag");
+                            }
+                        }}
+                        onDropAccepted={() => {
+                            var element = document.getElementById(`dropzone`)
+                            if (element) {
+                                element.classList.remove("drag");
+                            }
+                        }}
+                        onDropRejected={() => {
+                            setError("Something went wrong. Try again")
+                        }}
+                    >
+                        {({ getRootProps, getInputProps }) => (
+                            <section >
+                                <span>Max file size is 25kb. Supported file types are .jpg and .png</span>
+                                <div id="dropzone" className="dropzone" {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    <span>Drag and drop files here, or click to upload</span>
+                                </div>
+                                {error && <p className='error-msg'>{error}</p>}
+                            </section>
+                        )}
+                    </Dropzone>
 
-            <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={(values) => {
-                    // console.log(values)
-                }}
-            >
-                {({
-                    values,
-                    handleChange,
-                    handleBlur,
-                    errors,
-                    touched,
-                }) => (
-                    <Form onSubmit={(e) => handleSubmit(e)}>
-                        <h3>Upload Image</h3>
-                        {
-                            image ? <img src={image} width={100} height={100} />
-                                : <Padding></Padding>
-                        }
-                        <InputWrap error={errors.file}
-                            touched={touched.file}>
-                            <input
-                                accept="image/*"
-                                type="file"
-                                id="file"
-                                // value={values.file}
-                                name="file"
-                                // onChange={handleChange}
-                                onChange={(e) => convertToBase64(e)}
-                                onBlur={handleBlur}
-                            />
-                        </InputWrap>
+                </Box>
 
-                        <button className="primary" disabled={isLoading} type="submit">
-                            {isLoading ? <Loader /> : "Submit"}
-                        </button>
+                <button className="primary" disabled={!image} type="submit">
+                    {isLoading ? <Loader /> : "Submit"}
+                </button>
 
-                    </Form>
-                )}
-
-            </Formik>
-
+            </Form>
         </Wrapper>
     )
 };
 
-const InputWrap = styled.div`
-	// --horizontal-padding: 20px;
-	// --verical-padding: 9px;
-	--error-font-size: 1rem;
-	--border-width: 2px;
+const Box = styled.div`
+    // font-size: 10px;
 
-	display: flex;
-	align-items: center;
-	position: relative;
-	margin-bottom: ${(props) => (props.error && props.touched ? 25 : 20)}px;
-    width: 100%;
-    height: 40px;
-	
-    input {
+    .dropzone {
+        background-color: #fafafa;
         width: 100%;
-    margin-bottom: 0em;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    position: relative;
+        padding: 20px;
+        text-align: center;
+        font-weight: 600;
+        margin: 1em 0;
     }
-    
 
-    &::placeholder {
-        color: #ccc;
+    .drag {
+        border: 5px dashed ${props => props.theme.primaryColor};
+        filter: contrast(0.9);
+        background: white;
+    }
+
+    .error-msg {
+        font-size: 0.9em;
         font-weight: 700;
-        font-size: 10px;
-        text-transform: capitalize;
-        line-height: 25px;
-        margin: 0;
+        color: red;
+        text-align: left;
     }
 
-    &:after {
-		content: "${(props) => props.touched && props.error}";
-		color: red;
-		font-weight: 600;
-		position: absolute;
-		left: var(--horizontal-padding);
-		bottom: calc((var(--error-font-size) + (var(--border-width) * 4)) * -1);
-		font-size: 0.8rem;
-		margin-bottom: 0.5em;
-        width: 200px;
-	}
-	
 `;
 
 const Form = styled.form`

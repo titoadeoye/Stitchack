@@ -10,13 +10,13 @@ import { getUser } from "../api/users";
 import moment from "moment";
 import { avatar } from "../assets";
 
-export default function TopNav({ isSmallDevice, setIsOpenOverlay,setIsOpenModal, setIsSideNavOpen, setModalType }) {
+export default function TopNav({ isSmallDevice, setIsOpenOverlay, setIsOpenModal, setIsSideNavOpen, setModalType }) {
 	const { isLoggedIn, user, setUser } = useUserContext();
 	// const {firstname, lastname, email, phoneNumber, dateCreated} = user && user;
 	useEffect(() => {
 		getUser(user?._id)
-			.then(res => {setUser(res.data) })
-	}, [])
+			.then(res => { setUser(res.data) })
+	}, [user, setUser])
 
 	return (
 		<Nav id="topNav" isLoggedIn={!!isLoggedIn}>
@@ -52,10 +52,14 @@ export default function TopNav({ isSmallDevice, setIsOpenOverlay,setIsOpenModal,
 					{user && (
 						<User>
 							<span>
-								{user?.avatar ? <Avatar><img src={user?.avatar} alt="avatar" /></Avatar>
+								{user?.avatar ?
+									<Avatar>
+										<img src={user?.avatar} alt="avatar" />
+										<EditOutlinedIcon onClick={() => { setIsOpenModal(true); setModalType("avatar") }} />
+									</Avatar>
 									: <Avatar>
 										<img src={avatar} alt="avatar" />
-										<EditOutlinedIcon  onClick={() =>{ setIsOpenModal(true); setModalType("avatar")}} />
+										<EditOutlinedIcon onClick={() => { setIsOpenModal(true); setModalType("avatar") }} />
 									</Avatar>
 								}
 							</span>
