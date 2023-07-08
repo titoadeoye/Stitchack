@@ -322,7 +322,7 @@ const PagesWrapper = () => {
 
     useEffect(() => {
         if (!user || !isLoggedIn) {
-            navigate("/");
+            navigate("/signin");
         }
     }, []);
 
