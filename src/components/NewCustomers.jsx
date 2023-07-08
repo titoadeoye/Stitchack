@@ -19,14 +19,7 @@ export default function NewCustomers() {
         }
     );
 
-    if (isLoading) {
-        return (
-            <Wrapper>
-                <LoadingComponent />
-            </Wrapper>
-        )
-    }
-
+    
     return (
         <>
             <Wrapper>
@@ -36,22 +29,14 @@ export default function NewCustomers() {
                     {isLoading ? <LoadingComponent />
                         : customers && customers.data.length > 0 ?
                             <>
-                                {customers?.data?.slice(-4).reverse().map(customer => (
-                                    <Customer data={customer} />
+                                {customers?.data?.slice(-4).reverse().map((customer, key) => (
+                                    <Customer key={key} data={customer} />
                                 ))}
                             </>
 
                             : <p>No data available</p>
                     }
-                    {/* {customers && customers.data.length > 0 ?
-                        <>
-                            {customers?.data?.slice(-4).reverse().map(customer => (
-                                <Customer data={customer} />
-                            ))}
-                        </>
-
-                        : <p>No data available</p>
-                    } */}
+                   
                 </>
 
             </Wrapper>

@@ -1,22 +1,39 @@
 import styled from "styled-components";
+import { useQuery } from "react-query";
+import { getTodaysCustomers } from "../api/users";
 import { useUserContext } from "../context/UserContext";
-
+import { LoadingComponent } from ".";
+import { useState } from "react";
 
 export default function Performance() {
    const {user} = useUserContext();
 
+   const { data: todaysCustomers, isLoading } = useQuery(
+      ["todaysCustomers"],
+      () => user ? getTodaysCustomers(user?._id) : null,
+      {
+          onSuccess: () => { return; },
+          onError: (err) => console.log(err),
+          retry: 3,
+      }
+  );
    
    return (
       <Wrapper>
          <H3>Today's performance</H3>
          <Rows>
             <Row>
-               <h2>-</h2>
-               <p>New Orders</p>
+               <h2>
+               {isLoading ? <LoadingComponent />
+                        : todaysCustomers  ? `${todaysCustomers?.data}`
+                        : "-"
+                    }
+               </h2>
+               <p>New customers</p>
             </Row>
             <Row>
                <h2>-</h2>
-               <p>New customers</p>
+               <p>New Orders</p>
             </Row>
             <Row >
                <h2>&#8358;-</h2>

@@ -16,7 +16,7 @@ export default function TopNav({ isSmallDevice, setIsOpenOverlay, setIsOpenModal
 	useEffect(() => {
 		getUser(user?._id)
 			.then(res => { setUser(res.data) })
-	}, [user, setUser])
+	}, [])
 
 	return (
 		<Nav id="topNav" isLoggedIn={!!isLoggedIn}>
