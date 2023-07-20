@@ -10,14 +10,26 @@ codes, and also have access to the total revenue generated over a period of time
 # Status
 Still in progress
 
-# Features
+# Status Color Codes
+🟢 - _Done_
+🟡 - _In Progress_
+🔴 - _Not Started_
 
+# Features
+Tailors can:
+- View customers🟢
+- Create/add customers🟢
+- Delete customers🟡
+- Add measurements 🟢
+- View measurements 🟢
+- Edit measurements 🟡
+- 
 
 # Hosted on
 - [Netlify](https://stitchack.netlify.app)
 
 *🟡Note:*
-First API requests e.g logging in and signing up may take more time than usual due to initial loading time by server. (Free instance😅)
+First API requests e.g logging in and signing up may take more time than usual due to server initial load up time caused by inactivity. (Free instance😅)
 
 # Backend
 -[Link to backend repo](https://github.com/ty-codes/stitchack_backend)
