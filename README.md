@@ -15,6 +15,7 @@ Still in progress
 
 # Hosted on
 - [Netlify](https://stitchack.netlify.app)
+
 *🟡Note:*
 First API requests e.g logging in and signing up may take more time than usual due to initial loading time by server. (Free instance😅)
 
