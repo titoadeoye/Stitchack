@@ -41,4 +41,4 @@ Tailors can:
 First API requests e.g logging in and signing up may take more time than usual due to server initial load up time caused by inactivity. (Free instance😅)
 
 # Backend
--[Link to backend repo](https://github.com/ty-codes/stitchack_backend)
+- [Link to backend repo](https://github.com/ty-codes/stitchack_backend)
