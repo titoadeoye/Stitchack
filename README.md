@@ -17,13 +17,22 @@ Still in progress
 
 # Features
 Tailors can:
+- Add avatar 🟢
 - View customers🟢
 - Create/add customers🟢
 - Delete customers🟡
 - Add measurements 🟢
 - View measurements 🟢
 - Edit measurements 🟡
-- 
+- Manage orders 🟡
+- View performance metrics 🟢
+- Add catalogue 🔴
+
+# Version 2.0 🤩🤩
+- Messaging with potential clients
+- Marketplace for tailors
+- Voting for styles
+
 
 # Hosted on
 - [Netlify](https://stitchack.netlify.app)
