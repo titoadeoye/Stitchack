@@ -7,5 +7,16 @@ their work and store details of fabric type. It also serves as a productivity an
 management tool for tailors to organize their projects based on their status, using color 
 codes, and also have access to the total revenue generated over a period of time.
 
+# Status
+Still in progress
+
+# Features
+
+
 # Hosted on
 - [Netlify](https://stitchack.netlify.app)
+*🟡Note:*
+First API requests e.g logging in and signing up may take more time than usual due to initial loading time by server. (Free instance😅)
+
+# Backend
+-[Link to backend repo](https://github.com/ty-codes/stitchack_backend)
