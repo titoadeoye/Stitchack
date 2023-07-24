@@ -109,7 +109,7 @@ const Wrapper = styled.div`
 	// --horizontal-padding: 20px;
 	// --verical-padding: 9px;
 	--error-font-size: 1rem;
-	--border-width: 2px;
+	--border-width: 3px;
 
 	display: flex;
 	align-items: center;
@@ -121,7 +121,7 @@ const Wrapper = styled.div`
     margin: auto;
 	margin-bottom: ${(props) => (props.error && props.touched ? 25 : 20)}px;
     // width: 20em;
-	max-width: 20em;
+	// max-width: 20em;
     border: 1px solid #ccc;
 
 	.tel {
@@ -150,12 +150,10 @@ const Wrapper = styled.div`
 		flex: 1;
         margin: 0;
 		letter-spacing: 1px;
-		color: #2b0548;
+		color: #141414;
         height: 51px;
 		padding-left: 1em;
-		background-color: rgba(246, 229, 247, 0.03);
-	
-		
+		background-color: rgba(246, 229, 247, 0.03);	
 	}
 
 	input[type="textarea"] {
@@ -180,7 +178,7 @@ const Wrapper = styled.div`
 		font-style: normal;
 		font-weight: 700;
 		font-size: 12px;
-		color: #2b0548;
+		color: #141414;
 	}
 	
 	.right-text {
@@ -258,13 +256,14 @@ const Wrapper = styled.div`
 
 	&:after {
 		content: "${(props) => props.touched && props.error}";
-		color: #2b0548;
+		color: #141414;
 		font-weight: 600;
 		position: absolute;
 		left: var(--horizontal-padding);
 		bottom: calc((var(--error-font-size) + (var(--border-width) * 4)) * -1);
 		font-size: 12px;
 		margin-bottom: 0.5em;
+		width: max-content;
 	}
 `;
 
@@ -284,7 +283,7 @@ const Label = styled.label`
 
 	a {
 		text-decoration: none;
-		color: #2b0548;
+		color: #141414;
 		font-weight: 600;
 	}
 
