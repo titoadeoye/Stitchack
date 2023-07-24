@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { CustomInput, Loader } from "../components";
 import { Link, useNavigate } from "react-router-dom";
-import { fireSwalError } from "../constants";
+import { device, fireSwalError } from "../constants";
 import { signUp } from "../api/auth";
 import { useMutation } from "react-query";
 import * as Yup from "yup";
@@ -169,12 +169,16 @@ const Wrapper = styled.div`
 
     &:before {
         border-width: 150px;
-        border-color: transparent #2b0548 #2b0548 transparent;
+        border-color: transparent #141414 #141414 transparent;
         bottom: 0px;
         right: 0px;
 
         @media (max-width: 900px) {
             border-width: 100px;
+        }
+
+        @media ${device.mobileL} {
+            display: none;
         }
     }
 
@@ -205,7 +209,8 @@ const Form = styled.form`
         text-align: center;
         margin-bottom: 1em;
         font-weight: 700;
-        color: #2b0548;
+        color: #141414;
+        text-shadow: 0 0 1px #141414;
     }
 
     div {
@@ -221,9 +226,10 @@ const Button = styled.button`
     margin: auto;
     padding: 10px 30px;
     font-weight: 800;
-    background-color: #2b0548;
-    color: wheat;
+    background-color: #141414;
+    color: white;
     border-radius: 5px;
+    margin: 3em auto;
 `;
 
 const Text = styled.h6`
