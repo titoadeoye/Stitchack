@@ -21,6 +21,8 @@ export default function Customers() {
         }
     );
 
+    customers && console.log(customers)
+
     if(isLoading) 
     <PageWrapper>
         <LoadingComponent />

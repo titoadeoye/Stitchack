@@ -103,6 +103,7 @@ export default function AddCustomer() {
                         navigate("/app/customers");
                     })
                     .catch((error) => {
+                        setIsLoading(false);
                         fireSwalError(error.message);
                     })
                 }}>
