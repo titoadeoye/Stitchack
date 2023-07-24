@@ -1,32 +1,37 @@
-import React, { Suspense, useState, useMemo, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import React, { Suspense, useState, useMemo, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate
+} from "react-router-dom";
 import styled from "styled-components";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import './App.css';
+import "./App.css";
 import { useMediaQuery } from "react-responsive";
-import { Outlet } from 'react-router-dom';
-import { ModalGroup, SideNav, TopNav, PageLoader } from './components';
-import { device } from './constants';
-import { useUserContext } from './context/UserContext';
-import { useModalContext } from './context/ModalContext';
+import { Outlet } from "react-router-dom";
+import { ModalGroup, SideNav, TopNav, PageLoader } from "./components";
+import { device } from "./constants";
+import { useUserContext } from "./context/UserContext";
+import { useModalContext } from "./context/ModalContext";
 // import Maintenance from "./pages/Maintenance/Maintenance";
 
-const NoMatch = React.lazy(() => import('./pages/NoMatch/NoMatch'));
-const Landing = React.lazy(() => import('./pages/Landing/Landing'));
-const Login = React.lazy(() => import('./pages/Login'));
-const Register = React.lazy(() => import('./pages/Register'));
-const Home = React.lazy(() => import('./pages/Home'));
-const Customers = React.lazy(() => import('./pages/Customers'));
-const Orders = React.lazy(() => import('./pages/Orders'));
-const AddCustomer = React.lazy(() => import('./pages/AddCustomer'));
-const Catalogue = React.lazy(() => import('./pages/Catalogue'));
-const Styles = React.lazy(() => import('./pages/Styles'));
-const Fabric = React.lazy(() => import('./pages/Fabric'));
-const Customer = React.lazy(() => import('./pages/Customer'));
-const AddOrder = React.lazy(() => import('./pages/AddOrder'));
-const StyleDataPages = React.lazy(() => import('./pages/StyleDataPages'));
-const FabricDataPages = React.lazy(() => import('./pages/FabricDataPages'));
-
+const NoMatch = React.lazy(() => import("./pages/NoMatch/NoMatch"));
+const Landing = React.lazy(() => import("./pages/Landing/Landing"));
+const Login = React.lazy(() => import("./pages/Login"));
+const Register = React.lazy(() => import("./pages/Register"));
+const Home = React.lazy(() => import("./pages/Home"));
+const Customers = React.lazy(() => import("./pages/Customers"));
+const Orders = React.lazy(() => import("./pages/Orders"));
+const AddCustomer = React.lazy(() => import("./pages/AddCustomer"));
+const Catalogue = React.lazy(() => import("./pages/Catalogue"));
+const Styles = React.lazy(() => import("./pages/Styles"));
+const Fabric = React.lazy(() => import("./pages/Fabric"));
+const Customer = React.lazy(() => import("./pages/Customer"));
+const AddOrder = React.lazy(() => import("./pages/AddOrder"));
+const StyleDataPages = React.lazy(() => import("./pages/StyleDataPages"));
+const FabricDataPages = React.lazy(() => import("./pages/FabricDataPages"));
+const EditMeasurements = React.lazy(() => import("./pages/EditMeasurements"));
 
 const GlobalStyle = createGlobalStyle`
     :root {
@@ -226,158 +231,215 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-    const theme = useMemo(
-        () => ({
-            black: "#000000",
-            white: "#fff",
-            grey: "#AFAFAF",
-            red: "#D32600",
-            primaryColor: "#141414",
-            background: "#141414",
-            services: "#141414",
-            text: "#FFFFFF",
-            secondaryColor: "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
+  const theme = useMemo(
+    () => ({
+      black: "#000000",
+      white: "#fff",
+      grey: "#AFAFAF",
+      red: "#D32600",
+      primaryColor: "#141414",
+      background: "#141414",
+      services: "#141414",
+      text: "#FFFFFF",
+      secondaryColor:
+        "linear-gradient(139.52deg, #6251C3 -73.08%, #A800AB 150.16%)",
 
-            // variables
-            sideBarWidth: "250px",
-        }),
-        []
-    );
-    return (
-        <ThemeProvider theme={theme}>
-            <Router>
-                <GlobalStyle />
-                <Suspense fallback={
-                    <Wrapper>
-                        <PageLoader />
-                    </Wrapper>
-                }>
+      // variables
+      sideBarWidth: "250px"
+    }),
+    []
+  );
+  return (
+    <ThemeProvider theme={theme}>
+      <Router>
+        <GlobalStyle />
+        <Suspense
+          fallback={
+            <Wrapper>
+              <PageLoader />
+            </Wrapper>
+          }
+        >
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="register" element={<Register />} />
+            <Route path="signin" element={<Login />} />
+            <Route path="*" element={<NoMatch />} />
 
-                    <Routes>
-
-                        <Route path='/' element={<Landing />} />
-                        <Route path='register' element={<Register />} />
-                        <Route path='signin' element={<Login />} />
-                        <Route path='*' element={<NoMatch />} />
-
-
-                        <Route path='app' element={<PagesWrapper />}>
-                            <Route index element={<Home />} />
-                            <Route path="customers" >
-                                <Route index element={<Customers />} />
-                                <Route path="add" element={<AddCustomer />} />
-                            </Route>
-                            <Route path="customer/:id" element={<Customer />} />
-                            <Route path="catalogue" >
-                                <Route index element={<Catalogue />} />
-                                <Route path="styles" >
-                                    <Route index element={<Styles />} />
-                                    <Route path="ankara" element={<StyleDataPages type="ankara" />} />
-                                    <Route path="blouse" element={<StyleDataPages type="blouse" />} />
-                                    <Route path="trouser" element={<StyleDataPages type="trouser" />} />
-                                    <Route path="skirt" element={<StyleDataPages type="skirt" />} />
-                                    <Route path="top" element={<StyleDataPages type="top" />} />
-                                    <Route path="wedding" element={<StyleDataPages type="wedding" />} />
-                                    <Route path="black-dress" element={<StyleDataPages type="black-dress" />} />
-                                    <Route path="two-piece" element={<StyleDataPages type="two-piece" />} />
-                                </Route>
-                                <Route path="fabric" >
-                                    <Route index element={<Fabric />} />
-                                    <Route path="lace" element={<FabricDataPages type="lace" />} />
-                                    <Route path="satin" element={<FabricDataPages type="satin" />} />
-                                    <Route path="silk" element={<FabricDataPages type="silk" />} />
-                                    <Route path="crepe" element={<FabricDataPages type="crepe" />} />
-                                    <Route path="lycra" element={<FabricDataPages type="lycra" />} />
-                                    <Route path="chiffon" element={<FabricDataPages type="chiffon" />} />
-                                    <Route path="damask" element={<FabricDataPages type="damask" />} />
-                                    <Route path="ankara" element={<FabricDataPages type="ankara" />} />
-                                    <Route path="denim" element={<FabricDataPages type="denim" />} />
-                                    <Route path="velvet" element={<FabricDataPages type="velvet" />} />
-                                    <Route path="cotton" element={<FabricDataPages type="cotton" />} />
-                                    <Route path="linen" element={<FabricDataPages type="linen" />} />
-                                </Route>
-                            </Route>
-                            <Route path="orders" >
-                                <Route index element={<Orders />} />
-                                <Route path="add" element={<AddOrder />} />
-                            </Route>
-                        </Route>
-
-
-                    </Routes>
-                </Suspense>
-                <ModalGroup />
-            </Router>
-        </ThemeProvider>
-    );
+            <Route path="app" element={<PagesWrapper />}>
+              <Route index element={<Home />} />
+              <Route path="customers">
+                <Route index element={<Customers />} />
+                <Route path="add" element={<AddCustomer />} />
+              </Route>
+              <Route path="customer/:id">
+                <Route index element={<Customer />} />
+                <Route path="edit" element={<EditMeasurements />} />
+              </Route>
+              <Route path="catalogue">
+                <Route index element={<Catalogue />} />
+                <Route path="styles">
+                  <Route index element={<Styles />} />
+                  <Route
+                    path="ankara"
+                    element={<StyleDataPages type="ankara" />}
+                  />
+                  <Route
+                    path="blouse"
+                    element={<StyleDataPages type="blouse" />}
+                  />
+                  <Route
+                    path="trouser"
+                    element={<StyleDataPages type="trouser" />}
+                  />
+                  <Route
+                    path="skirt"
+                    element={<StyleDataPages type="skirt" />}
+                  />
+                  <Route path="top" element={<StyleDataPages type="top" />} />
+                  <Route
+                    path="wedding"
+                    element={<StyleDataPages type="wedding" />}
+                  />
+                  <Route
+                    path="black-dress"
+                    element={<StyleDataPages type="black-dress" />}
+                  />
+                  <Route
+                    path="two-piece"
+                    element={<StyleDataPages type="two-piece" />}
+                  />
+                </Route>
+                <Route path="fabric">
+                  <Route index element={<Fabric />} />
+                  <Route
+                    path="lace"
+                    element={<FabricDataPages type="lace" />}
+                  />
+                  <Route
+                    path="satin"
+                    element={<FabricDataPages type="satin" />}
+                  />
+                  <Route
+                    path="silk"
+                    element={<FabricDataPages type="silk" />}
+                  />
+                  <Route
+                    path="crepe"
+                    element={<FabricDataPages type="crepe" />}
+                  />
+                  <Route
+                    path="lycra"
+                    element={<FabricDataPages type="lycra" />}
+                  />
+                  <Route
+                    path="chiffon"
+                    element={<FabricDataPages type="chiffon" />}
+                  />
+                  <Route
+                    path="damask"
+                    element={<FabricDataPages type="damask" />}
+                  />
+                  <Route
+                    path="ankara"
+                    element={<FabricDataPages type="ankara" />}
+                  />
+                  <Route
+                    path="denim"
+                    element={<FabricDataPages type="denim" />}
+                  />
+                  <Route
+                    path="velvet"
+                    element={<FabricDataPages type="velvet" />}
+                  />
+                  <Route
+                    path="cotton"
+                    element={<FabricDataPages type="cotton" />}
+                  />
+                  <Route
+                    path="linen"
+                    element={<FabricDataPages type="linen" />}
+                  />
+                </Route>
+              </Route>
+              <Route path="orders">
+                <Route index element={<Orders />} />
+                <Route path="add" element={<AddOrder />} />
+              </Route>
+            </Route>
+          </Routes>
+        </Suspense>
+        <ModalGroup />
+      </Router>
+    </ThemeProvider>
+  );
 }
 
 const PagesWrapper = () => {
-    const isSmallDevice = useMediaQuery({ maxWidth: 768 });
+  const isSmallDevice = useMediaQuery({ maxWidth: 768 });
 
-    const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-    const { user, isLoggedIn } = useUserContext();
-    const { setModalType, setIsOpenModal } = useModalContext();
-    const navigate = useNavigate();
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  const { user, isLoggedIn } = useUserContext();
+  const { setModalType, setIsOpenModal } = useModalContext();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!user || !isLoggedIn) {
-            navigate("/signin");
-        }
-    }, []);
+  useEffect(() => {
+    if (!user || !isLoggedIn) {
+      navigate("/signin");
+    }
+  }, []);
 
-    return (
-        <Container isSmallDevice={isSmallDevice}>
-            <TopNav
-                isSmallDevice={isSmallDevice}
-                setIsSideNavOpen={setIsSideNavOpen}
-                setModalType={setModalType}
-                setIsOpenModal={setIsOpenModal}
-            />
-            <SideNav
-                isSideNavOpen={isSideNavOpen}
-                setIsSideNavOpen={setIsSideNavOpen}
-            />
-            <Outlet />
-
-        </Container>
-    );
+  return (
+    <Container isSmallDevice={isSmallDevice}>
+      <TopNav
+        isSmallDevice={isSmallDevice}
+        setIsSideNavOpen={setIsSideNavOpen}
+        setModalType={setModalType}
+        setIsOpenModal={setIsOpenModal}
+      />
+      <SideNav
+        isSideNavOpen={isSideNavOpen}
+        setIsSideNavOpen={setIsSideNavOpen}
+      />
+      <Outlet />
+    </Container>
+  );
 };
 
 const Wrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    margin-top: 5em;
-`
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 5em;
+`;
 
 const Container = styled.div`
-	height: 100vh;
-    width: 100vw;
-	overflow-y: scroll;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
 
-	@media (min-width: 1024px) {
-		&::-webkit-scrollbar {
-			display: none;
-			width: 9px;
+  @media (min-width: 1024px) {
+    &::-webkit-scrollbar {
+      display: none;
+      width: 9px;
 
-			&:hover {
-				cursor: pointer;
-			}
-		}
+      &:hover {
+        cursor: pointer;
+      }
+    }
 
-		/* Track */
-		&::-webkit-scrollbar-track {
-			background: white;
-			box-shadow: inset 0 0 5px grey;
-			border-radius: 10px;
-		}
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: white;
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
 
-		/* Handle */
-		&::-webkit-scrollbar-thumb {
-			background: ${(props) => props.theme.primaryColor};
-		}
-	}
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: ${(props) => props.theme.primaryColor};
+    }
+  }
 `;
 
 export default App;
