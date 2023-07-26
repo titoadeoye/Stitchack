@@ -9,13 +9,13 @@ import { useUserContext } from "../context/UserContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-export default function AddCustomer() {
+export default function EditMeasurements() {
   const { user } = useUserContext();
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const { customer, key } = location?.state && location?.state;
+  const { customer } = location?.state && location?.state;
   
 //   useEffect(() => {
 //     navigate("/app/customers")
@@ -119,11 +119,9 @@ export default function AddCustomer() {
             },
             cid
           };
-          console.log(data);
           // mutate(user?._id, data);
             editMeasurements(user?._id, data)
               .then((res) => {
-                console.log(res);
                 setIsLoading(false);
                 fireSwalSuccess("Customer list has been updated");
                 navigate(`/app/customers`);
