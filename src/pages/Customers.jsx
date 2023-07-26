@@ -15,13 +15,11 @@ export default function Customers() {
         ["customers"],
         () => user ? getCustomers(user?._id) : null,
         {
-            onSuccess: (res) => {return;},
+            onSuccess: () => {return;},
             onError: (err) => console.log(err),
             retry: 3,
         }
     );
-
-    customers && console.log(customers)
 
     if(isLoading) 
     <PageWrapper>

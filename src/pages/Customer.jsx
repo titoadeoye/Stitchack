@@ -55,7 +55,6 @@ export default function Customer() {
             navigate("edit", {
                 replace: true,
                 state: {
-                    key: key,
                     customer: customer,
                     foo: "foo"
                 }
