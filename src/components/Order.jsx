@@ -1,66 +1,78 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import LoadingComponent from "./LoadingComponent";
 
-export default function Order({ order }) {
-    const { id, name, email, bill, paid, due, status } = order;
-    return (
+export default function Order({ order, id }) {
+  const {name, email, bill, paid, dueDate, status } = order;
+  return (
+    <>
+      {order ? (
         <Wrapper>
-            <p>{id}</p>
-            <p>{name}</p>
-            <p className="email" title={email}>{email}</p>
-            <p>{bill}</p>
-            <p>{paid}</p>
-            <p>{due}</p>
-            <Status status={status}>{status}</Status>
+          <p>{id + 1}</p>
+          <p>{name}</p>
+          <p className="email" title={email}>
+            {email}
+          </p>
+          <p>{bill}</p>
+          <p>{paid}</p>
+          <p>{dueDate}</p>
+          <Status status={status.toLowerCase()}>{status}</Status>
         </Wrapper>
-    )
-};
+      ) : (
+        <LoadingComponent />
+      )}
+    </>
+  );
+}
 
 const Wrapper = styled.li`
-    display: flex;
-    box-shadow: 2px 4px 8px 0 #eeeeee;
-    padding: 15px;
-    border-radius: 5px;
-    align-items: center;
-    width: fit-content;
+  display: flex;
+  box-shadow: 2px 4px 8px 0 #eeeeee;
+  padding: 15px;
+  border-radius: 5px;
+  align-items: center;
+  width: fit-content;
 
+  p {
+    color: ${(props) => props.theme.primaryColor};
+    font-size: 13px;
+    text-transform: capitalize;
+    min-width: 150px;
+    max-width: 150px;
+    margin-right: 1em;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
-    p {
-        color: ${props => props.theme.primaryColor};
-        font-size: 13px;
-        text-transform: capitalize;
-        min-width: 150px;
-        max-width: 150px;
-        margin-right: 1em;
-        text-overflow: ellipsis;
-        overflow: hidden;
-
-        @media (max-width: 520px) {
-            font-size: 12px;
-            min-width: 100px;
-            max-width: 100px;
-        }
+    @media (max-width: 520px) {
+      font-size: 12px;
+      min-width: 100px;
+      max-width: 100px;
     }
+  }
 
-    .email {
-        text-transform: lowercase;
-    }
+  .email {
+    text-transform: lowercase;
+  }
 `;
 
 const Status = styled.p`
-    text-align: center;
-    padding-block: 7px;
-    border-radius: 5px;
-    font-weight: 600;
-    color: ${(props) => (
-        props.status === "in progress" ? "#000000" :
-            props.status === "not started" ? "#E70000 !important" :
-                props.status === "completed" ? "#00700D !important" :
-                    "yellow"
-    )};
-    background-color: ${(props) => (
-        props.status === "in progress" ? "#EA5E0D" :
-            props.status === "not started" ? "#FFC0C0" :
-                props.status === "completed" ? "#CCFAD0" :
-                    "yellow"
-    )};
+  text-align: center;
+  padding-block: 7px;
+  border-radius: 5px;
+  font-weight: 600;
+  color: ${(props) =>
+    props.status === "in progress"
+      ? "#000000"
+      : props.status === "not started"
+      ? "#E70000 !important"
+      : props.status === "completed"
+      ? "#00700D !important"
+      : "yellow"};
+  background-color: ${(props) =>
+    props.status === "in progress"
+      ? "#EA5E0D"
+      : props.status === "not started"
+      ? "#FFC0C0"
+      : props.status === "completed"
+      ? "#CCFAD0"
+      : "yellow"};
 `;
