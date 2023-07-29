@@ -12,11 +12,12 @@ import { avatar } from "../assets";
 
 export default function TopNav({ isSmallDevice, setIsOpenOverlay, setIsOpenModal, setIsSideNavOpen, setModalType }) {
 	const { isLoggedIn, user, setUser } = useUserContext();
-	// const {firstname, lastname, email, phoneNumber, dateCreated} = user && user;
+
 	useEffect(() => {
-		getUser(user?._id)
+		user?._id && getUser(user?._id)
 			.then(res => { setUser(res.data) })
-	}, [])
+	}, [user?._id])
+
 
 	return (
 		<Nav id="topNav" isLoggedIn={!!isLoggedIn}>
