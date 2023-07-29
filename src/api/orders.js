@@ -9,12 +9,12 @@ const api = axios.create({
 });
 
 api.interceptors.response.use(undefined, (error) => {
-	if (
-		error.response.status === 401 ||
-		error.response.data.message === "401 Unauthorized"
-	) {
-		logout();
-	}
+  if (
+    error.response.status === 401 ||
+    error.response.data.message === "401 Unauthorized"
+  ) {
+    logout();
+  }
 });
 
 export const getOrders = (id) =>
@@ -32,6 +32,18 @@ export const getOrders = (id) =>
 export const addOrder = (id, data) =>
   api
     .post(`/${id}/orders`, data, {
+      headers: {
+        Authorization: `Bearer ${getFromStorage("token")}`
+      }
+    })
+    .then((res) => res.data)
+    .catch((error) => {
+      throw new Error(error.response.data.message);
+    });
+
+export const getTodaysOrders = (id) =>
+  api
+    .get(`/${id}/orders/today`, {
       headers: {
         Authorization: `Bearer ${getFromStorage("token")}`
       }
