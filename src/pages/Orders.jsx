@@ -16,7 +16,7 @@ export default function Orders() {
   const { user } = useUserContext();
   // const date = new Date();
   // var currentDate = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
-  const { data: orders, loading } = useQuery(
+  const { data: orders, isLoading } = useQuery(
     ["orders"],
     () => (user ? getOrders(user?._id) : null),
     {
@@ -42,14 +42,15 @@ export default function Orders() {
     }
   };
 
-  if (loading)
+  if (isLoading)
     <PageWrapper>
       <LoadingComponent />
     </PageWrapper>;
+
   return (
     <PageWrapper>
       <H3>Orders</H3>
-      <div className="hey">
+      <div>
         {orders?.data?.length && (
           <Filter>
             <FilterButton>
@@ -102,7 +103,7 @@ export default function Orders() {
         )}
       </div>
 
-      {loading ? (
+      {isLoading ? (
         <LoadingComponent />
       ) : orders?.data?.length ? (
         <Wrapper>
