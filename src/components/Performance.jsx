@@ -3,28 +3,36 @@ import { useQuery } from "react-query";
 import { getTodaysCustomers } from "../api/users";
 import { useUserContext } from "../context/UserContext";
 import { LoadingComponent } from ".";
-import { useState } from "react";
+import { getTodaysOrders } from "../api/orders";
 
 export default function Performance() {
    const {user} = useUserContext();
 
-   const { data: todaysCustomers, isLoading } = useQuery(
+   const { data: todaysCustomers, isLoading: loadingCustomers } = useQuery(
       ["todaysCustomers"],
-      () => user ? getTodaysCustomers(user?._id) : null,
+      () => user?._id ? getTodaysCustomers(user?._id) : null,
       {
-          onSuccess: () => { return; },
           onError: (err) => console.log(err),
           retry: 3,
       }
   );
-   
+  
+  const { data: todaysOrders, isLoading: loadingOrders } = useQuery(
+   ["todaysOrders"],
+   () => user?._id ? getTodaysOrders(user?._id) : null,
+   {
+       onError: (err) => console.log(err),
+       retry: 3,
+   }
+);
+
    return (
       <Wrapper>
          <H3>Today's performance</H3>
          <Rows>
             <Row>
                <h2>
-               {isLoading ? <LoadingComponent />
+               {loadingCustomers ? <LoadingComponent />
                         : todaysCustomers  ? `${todaysCustomers?.data}`
                         : "-"
                     }
@@ -32,7 +40,12 @@ export default function Performance() {
                <p>New customers</p>
             </Row>
             <Row>
-               <h2>-</h2>
+               <h2>
+               {loadingOrders ? <LoadingComponent />
+                        : todaysOrders  ? `${todaysOrders?.data}`
+                        : "-"
+                    }
+               </h2>
                <p>New Orders</p>
             </Row>
             <Row >
