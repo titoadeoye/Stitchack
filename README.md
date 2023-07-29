@@ -8,7 +8,7 @@ management tool for tailors to organize their projects based on their status, us
 codes, and also have access to the total revenue generated over a period of time.
 
 # Status
-Still in progress
+Still in progress 
 
 # Status Color Codes
 🟢 - _Done_
