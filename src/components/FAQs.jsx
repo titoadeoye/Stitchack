@@ -57,6 +57,10 @@ const Wrapper = styled.div`
     margin: auto;
    text-align: center;
     padding: 20px 0;
+
+    @media (min-width: 1600px) {
+        padding: 3vw 0;
+    }
 `;
 
 const H2 = styled.h2`
@@ -67,6 +71,12 @@ const H2 = styled.h2`
     line-height: 35px;
     // color: rgb(168, 0, 171);
     color: var(--primaryColor);
+
+    @media (min-width: 1600px) {
+        font-size: 3vw;
+        line-height: 3vw;
+        margin: 3vw 0;
+    }
 `;
 
 const StyledAccordionItem = styled(AccordionItem)`
@@ -81,10 +91,22 @@ const StyledAccordionItemHeading = styled(AccordionItemHeading)`
     font-weight: 700;
     font-size: 1.3em;
     color: var(--white);
+
+    @media (min-width: 1600px) {
+        padding: 1.5em;
+        font-size: 1.2vw;
+    }
 `;
 
 const StyledAccordionItemPanel = styled(AccordionItemPanel)`
     padding: 1.5em;
     width: 80%;
     margin: auto;
+    
+    @media (min-width: 1600px) {
+        padding: 1.5em;
+        width: 80%;
+        margin: auto;
+        font-size: 1.2vw;
+    }
 `

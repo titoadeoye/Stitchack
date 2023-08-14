@@ -124,6 +124,10 @@ const Wrapper = styled.div`
 	// max-width: 20em;
     border: 1px solid #ccc;
 
+	@media (min-width: 1600px) {
+		margin: auto auto 2.3vw;
+	}
+
 	.tel {
 		margin-left: 1em;
 		font-weight: 800;
@@ -154,6 +158,19 @@ const Wrapper = styled.div`
         height: 51px;
 		padding-left: 1em;
 		background-color: rgba(246, 229, 247, 0.03);	
+
+		@media (min-width: 1600px) {
+			font-size: 1.3vw;
+			height: 4vw;
+			padding-left: 1vw;
+		}
+	}
+
+	input[type="checkbox"] {
+		@media (min-width: 1600px) {
+			height: 2vw;
+			width: 2vw;
+		}
 	}
 
 	input[type="textarea"] {
@@ -179,6 +196,12 @@ const Wrapper = styled.div`
 		font-weight: 700;
 		font-size: 12px;
 		color: #141414;
+
+		@media (min-width: 1600px) {
+			font-size: 1.3vw;
+			height: 4vw;
+			padding-left: 1vw;
+		}
 	}
 	
 	.right-text {
@@ -259,11 +282,17 @@ const Wrapper = styled.div`
 		color: #141414;
 		font-weight: 600;
 		position: absolute;
-		left: var(--horizontal-padding);
+		left: 0%;
 		bottom: calc((var(--error-font-size) + (var(--border-width) * 4)) * -1);
 		font-size: 12px;
 		margin-bottom: 0.5em;
 		width: max-content;
+		color: red;
+
+		@media (min-width: 1600px) {
+			bottom: -2vw;
+			font-size: 1vw;
+		}
 	}
 `;
 
@@ -279,6 +308,12 @@ const Label = styled.label`
 	text-align: center;
 	margin-bottom: 1em;
 	justify-content: center;
+
+	@media (min-width: 1600px) {
+        font-size: 1.2vw;
+		line-height: 1.2vw;
+		margin: 1.5vw 0;
+    }
 }
 
 	a {
@@ -296,6 +331,11 @@ const Label = styled.label`
 		font-size: 12px;
 		transform: translateX(-50%);
 		width: 100%;
+
+		@media (min-width: 1600px) {
+			bottom: -1.3vw;
+			font-size: 1vw;
+		}
 	}
 `;
 export default CustomInput;

@@ -49,6 +49,10 @@ const Wrapper = styled.footer`
             --size: 20px;
             height: 110px;
         }
+        @media (min-width: 1600px) {
+            --size: 3vw;
+            height: 11vw;
+        }
     }
 
     .box + .box {
@@ -75,6 +79,11 @@ const Text = styled.div`
     width: 100%;
     align-self: end;
     align-items: center;
+
+    @media (min-width: 1600px) {
+        height: 6vw;
+        padding: 0 2vw;
+    }
 `
 
 const Copyrights = styled.div`
@@ -86,6 +95,10 @@ const Copyrights = styled.div`
         color: #ddd;
         font-weight: lighter;
         margin-bottom: 0;
+
+        @media (min-width: 1600px) {
+            font-size: 0.9vw;
+        }
      }
 
      @media ${device.isSmallDevice} {
@@ -106,6 +119,10 @@ const LogoWrap = styled.div`
 
     img {
         height: 40px;
+
+        @media (min-width: 1600px) {
+            height: 4vw;
+        }
     }
     .socials {
         display: flex;
@@ -114,9 +131,18 @@ const LogoWrap = styled.div`
         gap: 10px;
         padding-top: 0.8em;
 
+        @media (min-width: 1600px) {
+            gap: 1vw;
+        }
+
         svg {
             width: 10px;
             height: 10px;
+
+            @media (min-width: 1600px) {
+                height: 1.2vw;
+                width: 1.2vw;
+            }
         }
     }
 `;
