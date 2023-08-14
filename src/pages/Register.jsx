@@ -180,6 +180,10 @@ const Wrapper = styled.div`
         @media ${device.mobileL} {
             display: none;
         }
+
+        @media (min-width: 1600px) {
+			border-width: 10vw;
+		}
     }
 
 
@@ -205,12 +209,22 @@ const Form = styled.form`
         width: 95%;
     }
 
+    @media (min-width: 1600px) {
+        width: 50%;
+        padding: 3vw;
+    }
+
     h2 {
         text-align: center;
         margin-bottom: 1em;
         font-weight: 700;
         color: #141414;
         text-shadow: 0 0 1px #141414;
+
+        @media (min-width: 1600px) {
+			font-size: 2.5vw;
+			margin-bottom: 2vw;
+		}
     }
 
     div {
@@ -230,6 +244,17 @@ const Button = styled.button`
     color: white;
     border-radius: 5px;
     margin: 3em auto;
+
+    @media (min-width: 1600px) {
+        padding: 0;
+        height: 5vh;
+        width: 30%;
+        font-size: 1.3vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5vw;
+    }
 `;
 
 const Text = styled.h6`
@@ -238,6 +263,10 @@ const Text = styled.h6`
     margin-top: 2em;
     text-align: center;
 
+    @media (min-width: 1600px) {
+        font-size: 1vw;
+        margin-top: 2vw;
+    }
 
     a {
         text-decoration: none;
@@ -245,8 +274,18 @@ const Text = styled.h6`
         font-weight: 600;
         font-size: 12px;
 
+        @media (min-width: 1600px) {
+            font-size: 1.1vw;
+            margin-top: 2vw;
+        }
+
         &:hover {
             text-decoration: underline;
+
+            @media (min-width: 1600px) {
+                font-size: 1.1vw;
+                margin-top: 2vw;
+            }
         }
     }
 `;
