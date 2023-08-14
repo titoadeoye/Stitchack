@@ -26,7 +26,7 @@ body {
 p {
     color: var(--primaryColor);
     font-size: 13px;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     line-height: 25px;
     margin: 0;
  }
@@ -119,6 +119,10 @@ p {
     justify-content: center;
 }
 
+.a-center {
+    align-items: center;
+}
+
 /* end of tbr section */
 
 @media (max-width: 768px) {
@@ -140,4 +144,12 @@ p {
     font-size: 27px !important;
     line-height: 25px !important;
    }
+}
+
+@media (min-width: 1600px) {
+
+    input[type="checkbox"] {
+        height: 1.8vw;
+        width: 1.8vw;
+    }
 }
