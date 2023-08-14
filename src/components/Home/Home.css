@@ -1,5 +1,5 @@
 #home {
-    height: 100vh;
+    height: auto;
 }
 
 #home .text {
@@ -25,17 +25,9 @@
 #home p {
     font-size: 16px;
     line-height: 28px;
-    color: #f6e5f7;
+    color: #fff;
 }
 
-/* #home button {
-    background: #fff;
-    border-radius: 10px;
-    border: none;
-    color: #A800AB;
-    font-weight: 700;
-    padding: 11px 70px;
-} */
 
 #home .brands {
     display: flex;
@@ -99,16 +91,11 @@
 @media (max-width: 900px) {
     #home {
         height: auto;
-        margin-bottom: 26em;
     }
     
 }
 
 @media (max-width: 700px) {
-
-    /* #home {
-        margin-bottom: 15em;
-    } */
     #home .landing {
         position: absolute;
         right: 0;
@@ -162,4 +149,23 @@
     #home .curve {
         height: 150px;
     }
+}
+
+@media (min-width: 1600px) {
+
+    #home .landing {
+        width: 20vw;
+    }
+
+    #home h1 {
+        font-size: 4vw;
+        line-height: 4vw;
+    }
+
+    #home p {
+        font-size: 1.2vw;
+        line-height: 1.6vw;
+        margin: 1vw 0;
+    }
+    
 }

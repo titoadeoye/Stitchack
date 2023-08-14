@@ -28,7 +28,7 @@ const NavBar = () => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
+                <Nav className="a-center justify-content-end flex-grow-1 pe-3">
                   <Nav.Link className='link' href="/">Home</Nav.Link>
                   <Nav.Link className='link' href="/#about">About Us</Nav.Link>
                   <Nav.Link className='link' href="/#faqs">FAQs</Nav.Link>
@@ -51,7 +51,13 @@ const Logo = styled.img`
   background-color: transparent;
   width: 130px;
   height: 65px;
-`
+
+  @media (min-width: 1600px) {
+    height: 7vh;
+    width: fit-content;
+  }
+  
+`;
 
 const Button = styled.button`
   // background: linear-gradient(139.52deg,#6251C3 -73.08%,#A800AB 150.16%);
@@ -73,8 +79,16 @@ const Wrapper = styled(Navbar)`
   height: 80px;
   padding: 0;
 
+  @media (min-width: 1600px) {
+    height: 10vh;
+  }
+
   .link {
     margin: 0 0.5em;
+
+    @media (min-width: 1600px) {
+        margin: 0 1vw;
+    }
   }
 
   .link, .link:hover, .link:focus, .link:active {
@@ -82,7 +96,11 @@ const Wrapper = styled(Navbar)`
     font-size: 1.3em;
     font-weight: 700;
     transition: color 0.5s linear, text-decoration 0.5s linear;
-  
+
+    @media (min-width: 1600px) {
+      font-size: 1.1vw;
+      line-height: 1.1vw;
+    } 
   }
 
   .offcanvas-body button {
@@ -91,6 +109,12 @@ const Wrapper = styled(Navbar)`
     color: white !important;
     border: none;
     margin: 0em 2em;
+
+    @media (min-width: 1600px) {
+      height: 3vh;
+      margin: 0 1.5vw;
+
+    }
   }
 
   .navbar > .container-fluid {

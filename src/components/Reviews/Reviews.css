@@ -96,3 +96,38 @@
         padding-inline: 40px;
     }
 }
+
+@media (min-width: 1600px) {
+
+    #reviews {
+        padding-inline: 4vw;
+    }
+
+    #reviews h2 {
+        font-size: 3vw;
+        line-height: 3vw;
+        margin: 3vw 0;
+    }
+
+    .review {
+        width: 30%;
+        padding: 3vw;
+    }
+
+    .review img {
+        height: 6vw;
+        width: 6vw;
+    }
+
+    .review p {
+        font-size: 1vw;
+        line-height: 1.3vw;
+    }
+
+    .review h3{
+        font-size: 1.3vw;
+        line-height: 1.3vw;
+        margin: 1vw 0;
+    }
+    
+}

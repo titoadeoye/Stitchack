@@ -9,7 +9,7 @@
     width: 80%;
     margin: auto;
     border-radius: 10px;
-
+    margin-top: 30vh;
 }
 
 #services h2 {
@@ -56,5 +56,33 @@
 @media (max-width: 550px) {
     .service {
         margin-bottom: 2.5em;
+    }
+}
+
+@media (min-width: 1600px) {
+    .service p{
+        font-size: 0.9vw;
+        line-height: 1.1vw;
+    }
+
+    #services {
+        padding: 3vw 0;
+    }
+
+    .service svg {
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .service h4 {
+        font-size: 1.3vw;
+        line-height: 1.3vw;
+        margin: 1.3vw 0;
+    }
+
+    #services h2 {
+        font-size: 2.5vw;
+        line-height: 2.5vw;
+        padding: 3vw 0;
     }
 }

@@ -25,6 +25,7 @@
     /* color: #4F4F4F; */
     color: var(--background);
     width: 80%;
+    text-align: left;
 }
 
 #about a {
@@ -60,4 +61,28 @@
         width: 100%;
     }
 
+}
+
+@media (min-width: 1600px) {
+
+    #about {
+        padding: 0 4vw;
+    }
+
+    #about h2 {
+        font-size: 3vw;
+        line-height: 3vw;
+        margin: 3vw 0;
+    }
+
+    #about img {
+        width: 40vw;
+        height: 35vw;
+    }
+
+    #about p, #about a {
+        font-size: 1vw;
+        line-height: 1.5vw;
+        width: 90%;
+    }
 }
